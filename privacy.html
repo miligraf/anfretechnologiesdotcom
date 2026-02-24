@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy | Anfre Technologies LLC</title>
+  <meta name="description" content="Privacy Policy for Anfre Technologies LLC and anfretechnologies.com.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #071019;
+      --panel: rgba(13, 22, 33, 0.84);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #ecf2ff;
+      --muted: #a8b6d6;
+      --accent: #68f0c0;
+      --accent-2: #7db9ff;
+      --max: 980px;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 95% -10%, rgba(125, 185, 255, 0.24), transparent 55%),
+        radial-gradient(700px 420px at -10% 0%, rgba(104, 240, 192, 0.18), transparent 55%),
+        linear-gradient(180deg, #071019 0%, #09121f 48%, #09111b 100%);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at 50% 20%, black, transparent 78%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+
+    .topbar,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(14, 22, 34, 0.86), rgba(9, 15, 24, 0.9));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border-radius: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 1.85rem;
+      height: 1.85rem;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #051118;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-size: 0.88rem;
+      box-shadow: 0 8px 18px rgba(104, 240, 192, 0.22);
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero {
+      margin-top: 1rem;
+      padding: 1.1rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.6rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(104, 240, 192, 0.12);
+    }
+
+    h1 {
+      margin: 0.75rem 0 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .lead {
+      margin: 0.65rem 0 0;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .meta {
+      margin-top: 0.85rem;
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    .meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.28rem 0.55rem;
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .content {
+      margin-top: 1rem;
+      padding: 1.1rem;
+    }
+
+    .content h2 {
+      margin: 0;
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+    }
+
+    .content h2 + p {
+      margin-top: 0.45rem;
+    }
+
+    .content section + section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .content p {
+      margin: 0.55rem 0 0;
+      color: #dbe7ff;
+    }
+
+    .content ul {
+      margin: 0.55rem 0 0;
+      padding-left: 1.15rem;
+      color: #dbe7ff;
+    }
+
+    .content li + li {
+      margin-top: 0.35rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      margin-top: 0.45rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.55rem 0.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.88rem;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      padding: 0.95rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer strong {
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.55rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+      font-size: 0.82rem;
+    }
+
+    .footer-links a:hover {
+      border-color: rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 1rem));
+        padding-top: 0.5rem;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .footer {
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar" aria-label="Site header">
+      <a class="brand" href="index.html" aria-label="Anfre Technologies LLC home">
+        <span class="brand-mark" aria-hidden="true">AT</span>
+        <span>Anfre Technologies LLC</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <section class="card hero" aria-labelledby="privacy-title">
+      <div class="eyebrow">anfretechnologies.com</div>
+      <h1 id="privacy-title">Privacy Policy</h1>
+      <p class="lead">
+        This Privacy Policy describes how Anfre Technologies LLC may collect, use, and protect information when you visit <strong>anfretechnologies.com</strong> and related pages.
+      </p>
+      <div class="meta" aria-label="Policy metadata">
+        <span>Last Updated: February 24, 2026</span>
+        <span>Website Policy</span>
+      </div>
+    </section>
+
+    <article class="card content" aria-label="Privacy policy content">
+      <section>
+        <h2>1. Scope</h2>
+        <p>
+          This policy applies to the public website for Anfre Technologies LLC, including the homepage and related informational pages hosted at anfretechnologies.com.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Information We May Collect</h2>
+        <p>We may collect limited information in the following ways:</p>
+        <ul>
+          <li>Information you provide directly if you contact us by email.</li>
+          <li>Basic technical or usage information automatically logged by hosting providers (such as IP address, browser type, or request details).</li>
+          <li>Any information contained in messages you send to us.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. How We Use Information</h2>
+        <p>Information may be used to:</p>
+        <ul>
+          <li>Respond to inquiries and communications.</li>
+          <li>Operate, maintain, and secure the website.</li>
+          <li>Protect our legal rights and comply with applicable laws.</li>
+          <li>Support lawful business activities of Anfre Technologies LLC.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Cookies and Analytics</h2>
+        <p>
+          This website is intended to be a simple informational site. We do not intentionally deploy advertising cookies on this page. Hosting or infrastructure providers may still create server logs or technical records as part of normal website operations.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Sharing of Information</h2>
+        <p>
+          We do not sell personal information collected through this website. Information may be shared only as reasonably necessary with service providers, for legal compliance, or to protect rights, safety, and security.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Data Retention</h2>
+        <p>
+          We retain information only for as long as reasonably necessary for business, legal, operational, or security purposes.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Data Security</h2>
+        <p>
+          We use reasonable administrative and technical measures appropriate to the nature of the website and information processed. No method of transmission or storage is guaranteed to be completely secure.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Third-Party Services and Links</h2>
+        <p>
+          This website may link to third-party websites or services. We are not responsible for the privacy practices of third parties. Review their policies before providing information.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Children's Privacy</h2>
+        <p>
+          This website is not directed to children under 13, and we do not knowingly collect personal information from children through this site.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Changes to This Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised “Last Updated” date.
+        </p>
+      </section>
+
+      <section>
+        <h2>11. Contact</h2>
+        <p class="muted">
+          Questions about this Privacy Policy can be sent to our contact email:
+        </p>
+        <a class="contact-link" id="privacy-email-link" href="#contact" aria-label="Email Anfre Technologies LLC about privacy">
+          Click to reveal email
+        </a>
+        <noscript>
+          <p class="muted">JavaScript is disabled. Email: contactus [at] anfretechnologies [dot] com</p>
+        </noscript>
+      </section>
+    </article>
+
+    <footer class="card footer" aria-label="Footer">
+      <div>
+        <strong>Anfre Technologies LLC</strong><br>
+        <span>&copy; 2026 Anfre Technologies LLC. All rights reserved.</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [
+        97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115,
+        46, 99, 111, 109
+      ];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" +
+        String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>
