@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coffee Grower Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Coffee Grower Sim — a coffee farm simulation game by Anfre Technologies LLC. Manage harvests, processing, and sales across a 5-year campaign.">
+  <meta name="theme-color" content="#795548">
+  <meta property="og:title" content="Coffee Grower Sim">
+  <meta property="og:description" content="Manage your coffee farm across 5 years of harvests, processing, and strategic selling.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anfretechnologies.com/apps/coffee-grower-sim/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --bg-warm: #FFF3E8;
+      --panel: #FFFFFF;
+      --line: rgba(121, 85, 72, 0.15);
+      --text: #3E2723;
+      --muted: #795548;
+      --accent: #3FA34D;
+      --accent-warm: #DDA15E;
+      --brown: #795548;
+      --brown-light: #A1887F;
+      --brown-dark: #4E342E;
+      --sky: #FFE29F;
+      --sky-cool: #AEDFF7;
+      --max: 980px;
+      --shadow: 0 2px 12px rgba(121, 85, 72, 0.1);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .wrap {
+      position: relative;
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+
+    .topbar,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--brown-dark);
+    }
+
+    .brand-mark {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--brown);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.92rem;
+      transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      color: var(--text);
+      border-color: var(--line);
+      background: var(--bg-warm);
+    }
+
+    .hero {
+      margin-top: 1rem;
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      background: linear-gradient(135deg, #FFF8F0, #FFF3E8, #FFF8F0);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(63, 163, 77, 0.08), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(221, 161, 94, 0.1), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      background: #fff;
+    }
+
+    .dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0.75rem 0 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--brown-dark);
+    }
+
+    .headline-accent {
+      color: var(--brown);
+    }
+
+    .lead {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      margin-top: 0.85rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.55rem;
+      background: #fff;
+    }
+
+    .stats {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .stat {
+      padding: 0.85rem;
+      text-align: center;
+      background: var(--bg-warm);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+    }
+
+    .stat-label {
+      margin-top: 0.15rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .features {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .feature {
+      padding: 1rem;
+    }
+
+    .feature-icon {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-icon.grow {
+      background: rgba(63, 163, 77, 0.12);
+    }
+
+    .feature-icon.process {
+      background: rgba(221, 161, 94, 0.15);
+    }
+
+    .feature-icon.plan {
+      background: rgba(121, 85, 72, 0.1);
+    }
+
+    .feature h2 {
+      margin: 0;
+      font-size: 1.02rem;
+      color: var(--brown-dark);
+    }
+
+    .feature p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .support {
+      margin-top: 1rem;
+      padding: 1.1rem;
+    }
+
+    .support h2 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--brown-dark);
+    }
+
+    .support p {
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      margin-top: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.5rem 0.7rem;
+      background: var(--bg-warm);
+      font-size: 0.92rem;
+      color: var(--brown-dark);
+      transition: background-color 120ms ease;
+    }
+
+    .contact-link:hover {
+      background: #FFE8D6;
+    }
+
+    .links {
+      margin-top: 0.85rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.8rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: #fff;
+      transition: background-color 120ms ease, border-color 120ms ease;
+    }
+
+    .button:hover {
+      background: var(--bg-warm);
+      border-color: rgba(121, 85, 72, 0.25);
+    }
+
+    .footer {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.88rem;
+      background: var(--bg-warm);
+    }
+
+    .footer strong { color: var(--brown-dark); }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.5rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.8rem;
+      transition: background-color 120ms ease;
+    }
+
+    .footer-links a:hover {
+      background: #FFE8D6;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 1rem));
+        padding-top: 0.5rem;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav { justify-content: flex-start; }
+
+      .features { grid-template-columns: 1fr; }
+
+      .stats { grid-template-columns: repeat(2, 1fr); }
+
+      .footer { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar" aria-label="Site header">
+      <a class="brand" href="../../index.html" aria-label="Anfre Technologies LLC home">
+        <span class="brand-mark" aria-hidden="true">CGS</span>
+        <span>Coffee Grower Sim</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../../index.html">Anfre Technologies</a>
+        <a href="./" aria-current="page">App</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="card hero" aria-labelledby="app-title">
+      <div class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>iOS App</span>
+      </div>
+      <h1 id="app-title">Coffee Grower Sim</h1>
+      <p class="lead">
+        Manage your coffee farm across a 5-year campaign. Make monthly decisions, harvest and process your beans, sell to buyers with different demands, and plan your growth season by season.
+      </p>
+      <div class="meta" aria-label="App metadata">
+        <span>Version 1.0</span>
+        <span>Simulation</span>
+        <span>Free</span>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Game highlights">
+      <article class="card stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Campaign Years</div>
+      </article>
+      <article class="card stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Regions</div>
+      </article>
+      <article class="card stat">
+        <div class="stat-value">3</div>
+        <div class="stat-label">Processing Methods</div>
+      </article>
+      <article class="card stat">
+        <div class="stat-value">60</div>
+        <div class="stat-label">Monthly Decisions</div>
+      </article>
+    </section>
+
+    <section class="features" aria-label="Game features">
+      <article class="card feature">
+        <div class="feature-icon grow" aria-hidden="true">&#127793;</div>
+        <h2>Grow &amp; Manage</h2>
+        <p>Tend your farm month by month. Balance soil health, water, disease prevention, and plant care with limited resources.</p>
+      </article>
+
+      <article class="card feature">
+        <div class="feature-icon process" aria-hidden="true">&#9749;</div>
+        <h2>Process &amp; Sell</h2>
+        <p>Choose washed, natural, or honey processing. Sell to local buyers, cooperatives, or exporters with unique pricing.</p>
+      </article>
+
+      <article class="card feature">
+        <div class="feature-icon plan" aria-hidden="true">&#128200;</div>
+        <h2>Plan &amp; Expand</h2>
+        <p>Reinvest earnings each year. Pick your region and variety. Unlock achievements across multiple playthroughs.</p>
+      </article>
+    </section>
+
+    <section class="card support" id="support" aria-labelledby="support-title">
+      <h2 id="support-title">Support</h2>
+      <p>
+        Questions, feedback, or need help? Reach out by email:
+      </p>
+      <a class="contact-link" id="support-email-link" href="#support" aria-label="Email support">
+        Click to reveal email
+      </a>
+      <noscript>
+        <p>JavaScript is disabled. Email: contactus [at] anfretechnologies [dot] com</p>
+      </noscript>
+      <div class="links">
+        <a class="button" href="privacy.html">Privacy Policy</a>
+      </div>
+    </section>
+
+    <footer class="card footer" aria-label="Footer">
+      <div>
+        <strong>Anfre Technologies LLC</strong><br>
+        <span>&copy; 2026 Anfre Technologies LLC. All rights reserved.</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../privacy.html">Site Privacy</a>
+        <a href="../../terms.html">Terms</a>
+      </div>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [
+        97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115,
+        46, 99, 111, 109
+      ];
+      var link = document.getElementById("support-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" +
+        String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Coffee Grower Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Privacy Policy for Coffee Grower Sim, a game by Anfre Technologies LLC.">
+  <meta name="theme-color" content="#795548">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --bg-warm: #FFF3E8;
+      --panel: #FFFFFF;
+      --line: rgba(121, 85, 72, 0.15);
+      --text: #3E2723;
+      --muted: #795548;
+      --accent: #3FA34D;
+      --accent-warm: #DDA15E;
+      --brown: #795548;
+      --brown-dark: #4E342E;
+      --max: 980px;
+      --shadow: 0 2px 12px rgba(121, 85, 72, 0.1);
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .wrap {
+      position: relative;
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+
+    .topbar,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+    }
+
+    .brand-mark {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--brown);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.92rem;
+      transition: color 120ms ease, border-color 120ms ease, background-color 120ms ease;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      color: var(--text);
+      border-color: var(--line);
+      background: var(--bg-warm);
+    }
+
+    .hero {
+      margin-top: 1rem;
+      padding: 1.1rem;
+      background: linear-gradient(135deg, #FFF8F0, #FFF3E8, #FFF8F0);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      background: #fff;
+    }
+
+    .dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0.75rem 0 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--brown-dark);
+    }
+
+    .lead {
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      max-width: 68ch;
+    }
+
+    .meta {
+      margin-top: 0.85rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .meta span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.55rem;
+      background: #fff;
+    }
+
+    .content {
+      margin-top: 1rem;
+      padding: 1.1rem;
+    }
+
+    .content h2 {
+      margin: 0;
+      font-size: 1.02rem;
+      color: var(--brown-dark);
+    }
+
+    .content h2 + p {
+      margin-top: 0.4rem;
+    }
+
+    .content section + section {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .content p {
+      margin: 0.5rem 0 0;
+      color: var(--text);
+    }
+
+    .content a {
+      color: var(--accent);
+    }
+
+    .content a:hover {
+      color: var(--brown-dark);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      margin-top: 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.5rem 0.7rem;
+      background: var(--bg-warm);
+      font-size: 0.92rem;
+      color: var(--brown-dark);
+      transition: background-color 120ms ease;
+    }
+
+    .contact-link:hover {
+      background: #FFE8D6;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.88rem;
+      background: var(--bg-warm);
+    }
+
+    .footer strong { color: var(--brown-dark); }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.25rem 0.5rem;
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.8rem;
+      transition: background-color 120ms ease;
+    }
+
+    .footer-links a:hover {
+      background: #FFE8D6;
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 1rem));
+        padding-top: 0.5rem;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav { justify-content: flex-start; }
+      .footer { align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar" aria-label="Site header">
+      <a class="brand" href="../../index.html" aria-label="Anfre Technologies LLC home">
+        <span class="brand-mark" aria-hidden="true">CGS</span>
+        <span>Coffee Grower Sim</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../../index.html">Anfre Technologies</a>
+        <a href="./">App</a>
+        <a href="privacy.html" aria-current="page">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="card hero" aria-labelledby="privacy-title">
+      <div class="eyebrow">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Coffee Grower Sim</span>
+      </div>
+      <h1 id="privacy-title">Privacy Policy</h1>
+      <p class="lead">
+        This Privacy Policy describes how Coffee Grower Sim, developed by Anfre Technologies LLC, handles your information.
+      </p>
+      <div class="meta" aria-label="Policy metadata">
+        <span>Last Updated: March 7, 2026</span>
+        <span>App Privacy Policy</span>
+      </div>
+    </section>
+
+    <article class="card content" aria-label="Privacy policy content">
+      <section>
+        <h2>1. Overview</h2>
+        <p>
+          Coffee Grower Sim is a single-player simulation game. Your privacy is important to us. This policy explains what data the app accesses, stores, and transmits.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Data Collection</h2>
+        <p>
+          Coffee Grower Sim does <strong>not</strong> collect, store, or transmit any personal data. The app does not require an account, login, or registration to play.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Local Storage</h2>
+        <p>
+          Game save data (your farm progress, settings, and achievements) is stored locally on your device using standard platform storage. This data never leaves your device and is not accessible to us or any third party.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Network Usage</h2>
+        <p>
+          The app uses Google Fonts for typography, which may make network requests to download font files on first launch. No personal information is transmitted in these requests. See the <a href="https://developers.google.com/fonts/faq/privacy">Google Fonts Privacy FAQ</a> for details.
+        </p>
+        <p>
+          No other network requests are made by the app. Gameplay is fully offline.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Analytics and Tracking</h2>
+        <p>
+          The app does not use any analytics, advertising, or tracking services. We do not collect usage data, crash reports, or device identifiers.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Children's Privacy</h2>
+        <p>
+          The app does not collect personal information from anyone, including children under 13. The app is suitable for all ages.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Third-Party Services</h2>
+        <p>
+          Other than the font loading described above, Coffee Grower Sim does not integrate with any third-party services, SDKs, or APIs.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Changes to This Policy</h2>
+        <p>
+          If this policy is updated, the changes will be posted on this page with an updated date.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Contact</h2>
+        <p style="color: var(--muted);">
+          Questions about this Privacy Policy can be sent to:
+        </p>
+        <a class="contact-link" id="privacy-email-link" href="#" aria-label="Email Anfre Technologies LLC about privacy">
+          Click to reveal email
+        </a>
+        <noscript>
+          <p>JavaScript is disabled. Email: contactus [at] anfretechnologies [dot] com</p>
+        </noscript>
+      </section>
+    </article>
+
+    <footer class="card footer" aria-label="Footer">
+      <div>
+        <strong>Anfre Technologies LLC</strong><br>
+        <span>&copy; 2026 Anfre Technologies LLC. All rights reserved.</span>
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="../../index.html">Home</a>
+        <a href="./">Coffee Grower Sim</a>
+        <a href="../../terms.html">Terms</a>
+      </div>
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [
+        97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115,
+        46, 99, 111, 109
+      ];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" +
+        String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>
