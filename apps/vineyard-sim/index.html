@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vineyard Sim — An Estate Folio | Anfre Technologies LLC</title>
+  <meta name="description" content="Vineyard Sim — a five-vintage folio of vines, weather, and winemaking. A simulation game by Anfre Technologies LLC.">
+  <meta name="theme-color" content="#F2EADB">
+  <meta property="og:title" content="Vineyard Sim">
+  <meta property="og:description" content="A five-vintage folio of vines, weather, and winemaking.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anfretechnologies.com/apps/vineyard-sim/">
+  <meta property="og:image" content="https://anfretechnologies.com/apps/vineyard-sim/region_napa.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --parchment: #F2EADB;
+      --parchment-hi: #F9F3E5;
+      --parchment-lo: #E8DDC6;
+      --ink: #1A0F12;
+      --burgundy: #5A1721;
+      --burgundy-hi: #7A2331;
+      --burgundy-lo: #3E0E16;
+      --gold: #B58A3A;
+      --gold-lo: #8B6A2C;
+      --vine: #4F5B3A;
+      --muted: #7A5A60;
+      --rule: rgba(90, 23, 33, 0.22);
+      --rule-soft: rgba(90, 23, 33, 0.1);
+      --rule-gold: rgba(181, 138, 58, 0.45);
+      --display: "Cormorant Garamond", "Garamond", "Hoefler Text", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      --max: 1180px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 1.04rem;
+      background-color: var(--parchment);
+      background-image:
+        radial-gradient(at 50% 0%, rgba(181, 138, 58, 0.1), transparent 55%),
+        radial-gradient(at 15% 95%, rgba(90, 23, 33, 0.08), transparent 55%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.09 0 0 0 0 0.13 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-attachment: fixed, fixed, fixed;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--burgundy);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    ::selection { background: var(--burgundy); color: var(--parchment-hi); }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    /* ─── Masthead ─────────────────────────────── */
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      color: var(--burgundy);
+    }
+
+    .brand-seal {
+      font-family: var(--body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.6rem 0.22rem;
+      border-radius: 1px;
+    }
+
+    .brand-name {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+      letter-spacing: 0.01em;
+    }
+
+    .nav {
+      display: inline-flex;
+      gap: 0.1rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a {
+      padding: 0.35rem 0.75rem;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .nav a:hover {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+
+    .nav a[aria-current="page"] {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ─── Wine-label hero ─────────────────────────────── */
+
+    .hero {
+      position: relative;
+      margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: var(--parchment-lo);
+      box-shadow:
+        0 40px 80px -32px rgba(62, 14, 22, 0.55),
+        0 2px 8px rgba(62, 14, 22, 0.1);
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.03);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at center, transparent 20%, rgba(26, 15, 18, 0.35) 85%),
+        linear-gradient(180deg, rgba(26, 15, 18, 0.08) 0%, rgba(26, 15, 18, 0.25) 100%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      z-index: 2;
+    }
+
+    .hero-card {
+      width: min(540px, calc(100% - 2rem));
+      padding: clamp(1.75rem, 4vw, 3rem) clamp(1.75rem, 4vw, 3rem);
+      background: rgba(242, 234, 219, 0.94);
+      backdrop-filter: blur(2px);
+      border: 1px solid var(--rule);
+      outline: 1px solid var(--rule-gold);
+      outline-offset: 6px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 42%;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.75;
+      transform: translateX(-50%);
+    }
+
+    .hero-card::before { top: 0.85rem; }
+    .hero-card::after { bottom: 0.85rem; }
+
+    .hero-vintage {
+      font-size: 0.7rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-lo);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5.5vw, 3.75rem);
+      line-height: 1;
+      color: var(--burgundy);
+      letter-spacing: 0.02em;
+      margin: 0;
+      font-variant: small-caps;
+    }
+
+    .hero-rule {
+      width: 2.5rem;
+      height: 1px;
+      background: var(--burgundy);
+      margin: 1.1rem auto;
+      position: relative;
+    }
+
+    .hero-rule::before {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--parchment-hi);
+      padding: 0 0.5rem;
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    .hero-kicker {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      color: var(--ink);
+      margin: 0;
+      max-width: 32ch;
+      margin-inline: auto;
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      margin-top: 1.4rem;
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero-meta span { margin: 0 0.4rem; }
+    .hero-meta span + span::before {
+      content: "·";
+      color: var(--gold);
+      margin-right: 0.8rem;
+    }
+
+    /* ─── Overture (intro) ─────────────────────────────── */
+
+    .overture {
+      padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .overture-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .overture-eyebrow::before,
+    .overture-eyebrow::after {
+      content: "";
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .overture-text {
+      font-family: var(--display);
+      font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--ink);
+      max-width: 36ch;
+      margin: 1.1rem auto 0;
+      letter-spacing: 0.005em;
+    }
+
+    .overture-text em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+
+    /* ─── Section header ─────────────────────────────── */
+
+    .section-head {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: end;
+      gap: 1.5rem;
+      padding: clamp(2.5rem, 5vw, 4rem) 0 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-head::before,
+    .section-head::after {}
+
+    .section-head-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--gold-lo);
+      line-height: 1;
+      letter-spacing: 0.05em;
+    }
+
+    .section-head-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1;
+      color: var(--burgundy);
+      margin: 0;
+      letter-spacing: 0.015em;
+      font-variant: small-caps;
+    }
+
+    .section-head-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ─── Estates (region gallery) ─────────────────────────────── */
+
+    .estates {
+      padding: 2rem 0 clamp(2.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1.75rem, 4vw, 3rem);
+    }
+
+    .estate {
+      position: relative;
+    }
+
+    .estate-frame {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      background: var(--parchment-lo);
+      box-shadow:
+        0 30px 54px -28px rgba(62, 14, 22, 0.55),
+        0 2px 6px rgba(62, 14, 22, 0.08);
+    }
+
+    .estate-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+      transition: transform 1000ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+
+    .estate:hover .estate-frame img { transform: scale(1.04); }
+
+    .estate-label {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 1rem 0 0.25rem;
+      position: relative;
+    }
+
+    .estate-label::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+
+    .estate-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold-lo);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .estate-name {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.1;
+      color: var(--burgundy);
+      letter-spacing: 0.01em;
+    }
+
+    .estate-name em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .estate-tier {
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 0.3rem 0.55rem 0.26rem;
+      border: 1px solid var(--rule);
+    }
+
+    .estate-tier--free { color: var(--vine); border-color: var(--vine); }
+    .estate-tier--paid { color: var(--burgundy); border-color: var(--burgundy); }
+
+    .estate-gloss {
+      margin-top: 0.85rem;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    /* ─── Ornamental rule ─────────────────────────────── */
+
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: clamp(2rem, 4vw, 3rem) 0;
+    }
+
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: "";
+      width: min(180px, 22vw);
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .ornament-rule span {
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* ─── The Vintage (features) ─────────────────────────────── */
+
+    .vintage {
+      padding: 1.25rem 0 clamp(3rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .vintage-item {
+      text-align: center;
+      padding: 1.5rem 0.5rem 0;
+      position: relative;
+    }
+
+    .vintage-item::before {
+      content: "◆";
+      color: var(--gold);
+      font-size: 0.55rem;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .vintage-item::after {
+      content: "";
+      position: absolute;
+      top: 0.45rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2.5rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .vintage-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--gold-lo);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+
+    .vintage-title {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.85rem;
+      line-height: 1.1;
+      color: var(--burgundy);
+      letter-spacing: 0.01em;
+      margin: 0 0 0.85rem;
+      font-variant: small-caps;
+    }
+
+    .vintage-body {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ink);
+      max-width: 32ch;
+      margin: 0 auto;
+    }
+
+    .vintage-tags {
+      margin-top: 1.25rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .vintage-tags span + span::before {
+      content: "·";
+      color: var(--gold);
+      margin: 0 0.5rem;
+    }
+
+    /* ─── Pull quote ─────────────────────────────── */
+
+    .pullquote {
+      padding: clamp(3rem, 5vw, 4.5rem) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      position: relative;
+    }
+
+    .pullquote::before {
+      content: "“";
+      position: absolute;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--display);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    .pullquote q {
+      display: block;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+      line-height: 1.35;
+      color: var(--burgundy);
+      letter-spacing: 0.005em;
+      max-width: 26ch;
+      margin: 2rem auto 0;
+      quotes: none;
+    }
+
+    .pullquote q::before, .pullquote q::after { content: ""; }
+
+    .pullquote-attr {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ─── Colophon ─────────────────────────────── */
+
+    .colophon {
+      padding: clamp(3rem, 5vw, 4.5rem) 0;
+      text-align: center;
+    }
+
+    .colophon-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .colophon-eyebrow::before,
+    .colophon-eyebrow::after {
+      content: "";
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .colophon h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--burgundy);
+      margin: 1rem 0 0.85rem;
+      letter-spacing: 0.01em;
+      font-variant: small-caps;
+    }
+
+    .colophon p {
+      max-width: 46ch;
+      margin: 0 auto;
+      color: var(--ink);
+    }
+
+    a.email-reveal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.4rem;
+      padding: 0.7rem 1.15rem;
+      background: var(--burgundy);
+      color: #fff;
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 1.06rem;
+      letter-spacing: 0.012em;
+      border: 1px solid var(--burgundy-lo);
+      outline: 1px solid var(--rule-gold);
+      outline-offset: 3px;
+      text-decoration: none;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+
+    a.email-reveal::before {
+      content: "✦";
+      color: var(--gold);
+    }
+
+    a.email-reveal:hover {
+      background: var(--burgundy-lo);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .tiny-link {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.15rem;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .tiny-link:hover {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ─── Footer ─────────────────────────────── */
+
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.75rem 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-left strong {
+      font-family: var(--display);
+      font-weight: 500;
+      color: var(--burgundy);
+      letter-spacing: 0.015em;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .footer-links a { color: var(--muted); transition: color 200ms ease; }
+    .footer-links a:hover { color: var(--burgundy); }
+
+    /* ─── Entrance motion ─────────────────────────────── */
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-card {
+      animation: fadeIn 1s cubic-bezier(0.2, 0.6, 0.2, 1) 200ms both;
+    }
+
+    .hero-img {
+      animation: imgFade 1.4s cubic-bezier(0.2, 0.6, 0.2, 1) both;
+    }
+
+    @keyframes imgFade {
+      from { opacity: 0; transform: scale(1.04); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* ─── Responsive ─────────────────────────────── */
+
+    @media (max-width: 880px) {
+      .estates { grid-template-columns: 1fr; }
+      .vintage { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      .mast { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+      .nav { flex-wrap: wrap; }
+      .hero { aspect-ratio: 4 / 5; }
+      .section-head { grid-template-columns: auto 1fr; }
+      .section-head-tag { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="mast" aria-label="Masthead">
+      <div class="brand">
+        <span class="brand-seal">Anfre Technologies</span>
+        <span class="brand-name">Vineyard Sim</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="../../index.html">Studio</a>
+        <a href="./" aria-current="page">Folio</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-img" src="region_napa.webp" alt="Golden-hour vineyard with cypress-lined estate in Napa Valley." loading="eager" fetchpriority="high" width="1344" height="896">
+      <div class="hero-label">
+        <div class="hero-card">
+          <div class="hero-vintage">MMXXVI · Vintage I</div>
+          <h1 class="hero-title" id="hero-title">Vineyard Sim</h1>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="hero-kicker">A five-vintage folio of vines, weather, and winemaking.</p>
+          <div class="hero-meta">
+            <span>Simulation</span><span>Free w/ IAP</span><span>iOS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overture" aria-label="Overture">
+      <div class="overture-eyebrow">Overture</div>
+      <p class="overture-text">
+        Five years. Two vineyard blocks. <em>A hundred small decisions</em> between the frost of spring and the last late-picked grape of fall.
+      </p>
+    </section>
+
+    <div class="ornament-rule" aria-hidden="true"><span>◆ ◆ ◆</span></div>
+
+    <header class="section-head">
+      <span class="section-head-num">I.</span>
+      <h2 class="section-head-title">The Estates</h2>
+      <span class="section-head-tag">Four regions · four climates</span>
+    </header>
+
+    <section class="estates" aria-label="Estates">
+      <article class="estate">
+        <figure class="estate-frame">
+          <img src="region_mendoza.webp" alt="Snow-capped Andes beyond purple-fruited grape rows — Mendoza." loading="lazy" width="1344" height="896">
+        </figure>
+        <div class="estate-label">
+          <span class="estate-num">I</span>
+          <span class="estate-name">Mendoza <em>· Argentina</em></span>
+          <span class="estate-tier estate-tier--free">Free</span>
+        </div>
+        <p class="estate-gloss">High-desert sun, snowmelt irrigation, Malbec country. Forgiving.</p>
+      </article>
+
+      <article class="estate">
+        <figure class="estate-frame">
+          <img src="region_marlborough.webp" alt="Lush New Zealand valley with rolling vineyards under dramatic clouds — Marlborough." loading="lazy" width="1344" height="896">
+        </figure>
+        <div class="estate-label">
+          <span class="estate-num">II</span>
+          <span class="estate-name">Marlborough <em>· New Zealand</em></span>
+          <span class="estate-tier estate-tier--free">Free</span>
+        </div>
+        <p class="estate-gloss">Maritime, green, wind-swept. Frost is real. Sauvignon Blanc's home.</p>
+      </article>
+
+      <article class="estate">
+        <figure class="estate-frame">
+          <img src="region_napa.webp" alt="Golden-hour vineyard with cypress-lined estate — Napa Valley." loading="lazy" width="1344" height="896">
+        </figure>
+        <div class="estate-label">
+          <span class="estate-num">III</span>
+          <span class="estate-name">Napa Valley <em>· USA</em></span>
+          <span class="estate-tier estate-tier--paid">Premium</span>
+        </div>
+        <p class="estate-gloss">Warm days, cool nights, Cabernet on chest-high trellis. High-ceiling terroir.</p>
+      </article>
+
+      <article class="estate">
+        <figure class="estate-frame">
+          <img src="region_tuscany.webp" alt="Classic Tuscan hill country with cypresses and stone villa — Tuscany." loading="lazy" width="1344" height="896">
+        </figure>
+        <div class="estate-label">
+          <span class="estate-num">IV</span>
+          <span class="estate-name">Tuscany <em>· Italy</em></span>
+          <span class="estate-tier estate-tier--paid">Premium</span>
+        </div>
+        <p class="estate-gloss">Sangiovese, old-world patience, and the hardest weather. A winemaker's test.</p>
+      </article>
+    </section>
+
+    <div class="ornament-rule" aria-hidden="true"><span>◆ ◆ ◆</span></div>
+
+    <header class="section-head">
+      <span class="section-head-num">II.</span>
+      <h2 class="section-head-title">The Vintage</h2>
+      <span class="section-head-tag">Three acts, per year</span>
+    </header>
+
+    <section class="vintage" aria-label="Yearly work">
+      <article class="vintage-item">
+        <div class="vintage-num">Act I</div>
+        <h3 class="vintage-title">Grow &amp; Tend</h3>
+        <p class="vintage-body">Winter pruning, spring canopy, summer ripening, fall harvest. Time the pick: early is safe, late is a gamble.</p>
+        <div class="vintage-tags"><span>Seasons</span><span>Blocks</span><span>Weather</span></div>
+      </article>
+      <article class="vintage-item">
+        <div class="vintage-num">Act II</div>
+        <h3 class="vintage-title">Craft &amp; Age</h3>
+        <p class="vintage-body">Cool, warm, or wild fermentation. Stainless, oak, or concrete aging. Blend compatible varieties for synergy.</p>
+        <div class="vintage-tags"><span>Fermentation</span><span>Cellar</span><span>Blending</span></div>
+      </article>
+      <article class="vintage-item">
+        <div class="vintage-num">Act III</div>
+        <h3 class="vintage-title">Sell &amp; Build</h3>
+        <p class="vintage-body">Local shop, sommelier, wine club, distributor — higher reputation unlocks premium channels. Grand Cru commands the best price.</p>
+        <div class="vintage-tags"><span>Buyers</span><span>Reputation</span><span>Upgrades</span></div>
+      </article>
+    </section>
+
+    <section class="pullquote" aria-label="Design philosophy">
+      <q>We simulate decisions, not reality. Clarity beats realism.</q>
+      <div class="pullquote-attr">— Studio operating principle</div>
+    </section>
+
+    <section class="colophon" id="support" aria-labelledby="support-title">
+      <div class="colophon-eyebrow">Colophon</div>
+      <h2 id="support-title">Support &amp; correspondence</h2>
+      <p>Questions, feedback, or a story about the vintage that got away — write to us directly. We read every note.</p>
+      <a class="email-reveal" id="support-email-link" href="#support" aria-label="Email support">
+        Click to reveal email
+      </a>
+      <br>
+      <a class="tiny-link" href="privacy.html">Privacy policy →</a>
+      <noscript>
+        <p style="font-size:0.88rem; color:var(--muted); margin-top:0.85rem;">
+          JavaScript disabled — email: contactus [at] anfretechnologies [dot] com
+        </p>
+      </noscript>
+    </section>
+
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-left">
+        <strong>Anfre Technologies LLC</strong> · © 2026 · all rights reserved
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="../../index.html">Studio</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="../../terms.html">Terms</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("support-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>
