@@ -293,9 +293,12 @@
     .work-card {
       display: flex;
       flex-direction: column;
+    }
+
+    .work-cover {
+      display: block;
       text-decoration: none;
       color: inherit;
-      transition: transform 400ms cubic-bezier(0.2, 0.6, 0.2, 1);
     }
 
     .work-frame {
@@ -317,7 +320,7 @@
       transition: transform 1000ms cubic-bezier(0.2, 0.6, 0.2, 1);
     }
 
-    .work-card:hover .work-frame img { transform: scale(1.04); }
+    .work-cover:hover .work-frame img { transform: scale(1.04); }
 
     .work-status {
       position: absolute;
@@ -372,7 +375,7 @@
       transition: transform 300ms cubic-bezier(0.2, 0.6, 0.2, 1);
     }
 
-    .work-card:hover .work-arrow { transform: translateX(4px); }
+    .work-cover:hover .work-arrow { transform: translateX(4px); }
 
     .work-gloss {
       margin-top: 0.85rem;
@@ -382,6 +385,60 @@
       color: var(--muted);
       line-height: 1.5;
       max-width: 42ch;
+    }
+
+    .work-actions {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule-soft);
+      flex-wrap: wrap;
+    }
+
+    .work-cta {
+      font-family: var(--body);
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.6rem 0.9rem 0.56rem;
+      border: 1px solid var(--rule);
+      background: var(--paper-hi);
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+    }
+
+    .work-cta:hover {
+      background: var(--paper-lo);
+      border-color: rgba(26, 24, 18, 0.3);
+    }
+
+    .work-cta--primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .work-cta--primary:hover {
+      background: var(--ink-blue);
+      color: #fff;
+      border-color: var(--ink-blue);
+      transform: translateY(-1px);
+    }
+
+    .work-cta--disabled {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--rule);
+      cursor: default;
+    }
+
+    .work-cta--disabled:hover {
+      background: transparent;
+      border-color: var(--rule);
+      transform: none;
     }
 
     /* ─── Purpose ─────────────────────────────── */
@@ -716,31 +773,43 @@
     </header>
 
     <section class="work" aria-label="Portfolio">
-      <a class="work-card" href="apps/coffee-grower-sim/" aria-label="Coffee Grower Sim — visit page">
-        <figure class="work-frame">
-          <img src="apps/coffee-grower-sim/region_brazil.webp" alt="Watercolor farmland with red-earth terraces and coffee rows — Brazil Cerrado." loading="lazy" width="1344" height="896">
-          <span class="work-status">On the App Store</span>
-        </figure>
-        <div class="work-label">
-          <span class="work-num">01</span>
-          <span class="work-title">Coffee Grower Sim</span>
-          <span class="work-arrow">→</span>
-        </div>
+      <article class="work-card">
+        <a class="work-cover" href="apps/coffee-grower-sim/" aria-label="Coffee Grower Sim — visit page">
+          <figure class="work-frame">
+            <img src="apps/coffee-grower-sim/region_brazil.webp" alt="Watercolor farmland with red-earth terraces and coffee rows — Brazil Cerrado." loading="lazy" width="1344" height="896">
+            <span class="work-status">On the App Store</span>
+          </figure>
+          <div class="work-label">
+            <span class="work-num">01</span>
+            <span class="work-title">Coffee Grower Sim</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </a>
         <p class="work-gloss">A five-year study in patience, rain, and ripening. Manage a coffee farm across four seasonal phases, multiple buyers, and a single question — was that the right moment to pick?</p>
-      </a>
-
-      <a class="work-card" href="apps/vineyard-sim/" aria-label="Vineyard Sim — visit page">
-        <figure class="work-frame">
-          <img src="apps/vineyard-sim/region_napa.webp" alt="Golden-hour vineyard with cypress-lined estate — Napa Valley." loading="lazy" width="1344" height="896">
-          <span class="work-status work-status--forthcoming">Forthcoming</span>
-        </figure>
-        <div class="work-label">
-          <span class="work-num">02</span>
-          <span class="work-title">Vineyard Sim</span>
-          <span class="work-arrow">→</span>
+        <div class="work-actions">
+          <a class="work-cta" href="apps/coffee-grower-sim/">Read more</a>
+          <a class="work-cta work-cta--primary" href="https://apps.apple.com/us/app/coffee-grower-sim/id6760603696" target="_blank" rel="noopener" aria-label="Download Coffee Grower Sim on the App Store">↗ Download</a>
         </div>
+      </article>
+
+      <article class="work-card">
+        <a class="work-cover" href="apps/vineyard-sim/" aria-label="Vineyard Sim — visit page">
+          <figure class="work-frame">
+            <img src="apps/vineyard-sim/region_napa.webp" alt="Golden-hour vineyard with cypress-lined estate — Napa Valley." loading="lazy" width="1344" height="896">
+            <span class="work-status work-status--forthcoming">Forthcoming</span>
+          </figure>
+          <div class="work-label">
+            <span class="work-num">02</span>
+            <span class="work-title">Vineyard Sim</span>
+            <span class="work-arrow">→</span>
+          </div>
+        </a>
         <p class="work-gloss">A five-vintage folio of vines, weather, and winemaking. Time your harvest, ferment, age, and build the reputation of a small estate over five years.</p>
-      </a>
+        <div class="work-actions">
+          <a class="work-cta" href="apps/vineyard-sim/">Read more</a>
+          <span class="work-cta work-cta--disabled" aria-label="Coming soon to the App Store">Soon on App Store</span>
+        </div>
+      </article>
     </section>
 
     <header class="section-head" id="purpose">

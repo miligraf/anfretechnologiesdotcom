@@ -201,8 +201,58 @@
       line-height: 1.45;
     }
 
-    .hero-meta {
+    .hero-actions {
       margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .app-store-cta {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.1rem;
+      padding: 0.72rem 1.15rem 0.7rem;
+      background: var(--espresso);
+      color: #fff;
+      text-decoration: none;
+      line-height: 1;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+
+    .app-store-cta .cta-line-1 {
+      font-family: var(--display);
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "wght" 380, "SOFT" 100;
+      font-size: 0.82rem;
+      letter-spacing: 0.005em;
+      color: var(--paper-hi);
+      opacity: 0.78;
+    }
+
+    .app-store-cta .cta-line-2 {
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 1.12rem;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+
+    .app-store-cta .cta-line-2 span {
+      color: var(--cherry);
+      margin-left: 0.3rem;
+      font-weight: 500;
+    }
+
+    .app-store-cta:hover {
+      background: var(--cherry-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
       display: flex;
       gap: 0.55rem;
       flex-wrap: wrap;
@@ -733,10 +783,16 @@
         <p class="hero-kicker">
           A five-year study in patience, rain, and ripening — decide what to plant, when to pick, and how to sell.
         </p>
-        <div class="hero-meta">
-          <span class="chip chip--cherry">Version 2.0</span>
-          <span class="chip">Simulation</span>
-          <span class="chip">Free w/ IAP</span>
+        <div class="hero-actions">
+          <a class="app-store-cta" href="https://apps.apple.com/us/app/coffee-grower-sim/id6760603696" target="_blank" rel="noopener" aria-label="Download Coffee Grower Sim on the App Store">
+            <span class="cta-line-1">Download on the</span>
+            <span class="cta-line-2">App Store<span>↗</span></span>
+          </a>
+          <div class="hero-meta">
+            <span class="chip">Simulation</span>
+            <span class="chip">Free with IAP</span>
+            <span class="chip">iOS · v2.0</span>
+          </div>
         </div>
       </div>
       <figure class="plate">
