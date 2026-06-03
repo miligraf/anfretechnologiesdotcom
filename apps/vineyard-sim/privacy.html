@@ -418,7 +418,7 @@
       <div class="doc-title-rule" aria-hidden="true"></div>
       <p class="doc-sub">How Vineyard Sim handles your information.</p>
       <div class="doc-meta">
-        <span>Updated · Apr 30, 2026</span>
+        <span>Updated · Jun 3, 2026</span>
         <span>Plain language</span>
       </div>
     </header>
@@ -441,6 +441,8 @@
           <ul>
             <li><strong>Advertising (Google AdMob) —</strong> the app displays ads to support free gameplay. Google AdMob may collect device identifiers (such as the iOS Advertising Identifier / IDFA on Apple devices, or the Android Advertising ID on Android), approximate location, and usage data to serve relevant ads. On iOS, the app will request your permission via the App Tracking Transparency (ATT) prompt before any cross-app tracking takes place. If you decline, you will still see ads, but they will be non-personalized. You can change your decision at any time under Settings › Privacy &amp; Security › Tracking on iOS, or Settings › Google › Ads on Android. See the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li>
             <li><strong>In-App Purchases (RevenueCat) —</strong> the app uses RevenueCat to manage optional in-app purchases. RevenueCat may collect anonymous device identifiers and purchase transaction data to process and verify purchases. No personal information is shared. See the <a href="https://www.revenuecat.com/privacy/">RevenueCat Privacy Policy</a>.</li>
+            <li><strong>Analytics (Firebase / Google Analytics) —</strong> the app records anonymous, app-instance-scoped usage events (such as starting a game or completing a season) and aggregate properties to understand how the game is played. This data is pseudonymous — it is not tied to a login or your real identity — and Google may derive an approximate location from your IP address. See the <a href="https://firebase.google.com/support/privacy">Firebase Privacy &amp; Security</a> and <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</li>
+            <li><strong>Crash &amp; performance diagnostics (Firebase Crashlytics &amp; Performance Monitoring) —</strong> when the app crashes or to monitor stability, it sends crash logs, device and diagnostic information, and an install identifier to Google. This helps us fix bugs and improve performance and is not used to identify you. The app also uses Firebase Remote Config (install identifier only) to adjust settings remotely. See the <a href="https://firebase.google.com/support/privacy">Firebase Privacy &amp; Security</a>.</li>
           </ul>
         </div>
       </section>
@@ -458,7 +460,7 @@
         <div>
           <h2>Network usage</h2>
           <p>The app uses Google Fonts for typography, which may make network requests to download font files on first launch. See the <a href="https://developers.google.com/fonts/faq/privacy">Google Fonts Privacy FAQ</a>.</p>
-          <p>The app also makes network requests to load ads (Google AdMob) and to verify in-app purchases (RevenueCat). All gameplay is fully offline and does not require an internet connection.</p>
+          <p>The app also makes network requests to load ads (Google AdMob), verify in-app purchases (RevenueCat), and send anonymous analytics and crash/performance diagnostics to Firebase (Google). Core gameplay is fully offline and does not require an internet connection.</p>
         </div>
       </section>
 
@@ -475,7 +477,7 @@
         <span class="doc-num">VI.</span>
         <div>
           <h2>Children's privacy</h2>
-          <p>The app does not collect personal information from anyone, including children under 13. The app is suitable for all ages.</p>
+          <p>The app does not knowingly collect personally identifiable information — such as a name or email address — from anyone, including children under 13. The analytics and advertising identifiers described above are pseudonymous and are not used to identify individuals.</p>
         </div>
       </section>
 
@@ -487,6 +489,8 @@
           <ul>
             <li><strong>Google AdMob —</strong> ad serving. <a href="https://policies.google.com/privacy">Privacy policy</a>.</li>
             <li><strong>RevenueCat —</strong> in-app purchase management. <a href="https://www.revenuecat.com/privacy/">Privacy policy</a>.</li>
+            <li><strong>Firebase Analytics (Google) —</strong> anonymous usage analytics. <a href="https://firebase.google.com/support/privacy">Privacy &amp; Security</a>.</li>
+            <li><strong>Firebase Crashlytics &amp; Performance (Google) —</strong> crash reporting and performance diagnostics. <a href="https://firebase.google.com/support/privacy">Privacy &amp; Security</a>.</li>
             <li><strong>Google Fonts —</strong> typography. <a href="https://developers.google.com/fonts/faq/privacy">Privacy FAQ</a>.</li>
           </ul>
         </div>
