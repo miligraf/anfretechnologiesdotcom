@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Política de privacidad — Vineyard Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Política de privacidad de Vineyard Sim, un juego de Anfre Technologies LLC.">
+  <meta name="theme-color" content="#F2EADB">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --parchment: #F2EADB;
+      --parchment-hi: #F9F3E5;
+      --parchment-lo: #E8DDC6;
+      --ink: #1A0F12;
+      --burgundy: #5A1721;
+      --burgundy-hi: #7A2331;
+      --burgundy-lo: #3E0E16;
+      --gold: #B58A3A;
+      --gold-lo: #8B6A2C;
+      --vine: #4F5B3A;
+      --muted: #7A5A60;
+      --rule: rgba(90, 23, 33, 0.22);
+      --rule-soft: rgba(90, 23, 33, 0.1);
+      --rule-gold: rgba(181, 138, 58, 0.45);
+      --display: "Cormorant Garamond", "Garamond", "Hoefler Text", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.04rem;
+      background-color: var(--parchment);
+      background-image:
+        radial-gradient(at 50% 0%, rgba(181, 138, 58, 0.08), transparent 55%),
+        radial-gradient(at 15% 95%, rgba(90, 23, 33, 0.06), transparent 55%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.09 0 0 0 0 0.13 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-attachment: fixed, fixed, fixed;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--burgundy);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    ::selection { background: var(--burgundy); color: var(--parchment-hi); }
+
+    .wrap { width: min(680px, calc(100% - 2rem)); margin: 0 auto; }
+    .wrap-wide { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      color: var(--burgundy);
+    }
+
+    .brand-seal {
+      font-family: var(--body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.6rem 0.22rem;
+      border-radius: 1px;
+    }
+
+    .brand-name {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+      letter-spacing: 0.01em;
+    }
+
+    .nav {
+      display: inline-flex;
+      gap: 0.1rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a {
+      padding: 0.35rem 0.75rem;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .nav a:hover { color: var(--burgundy); border-bottom-color: var(--gold); }
+
+    .nav a[aria-current="page"] {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ─── Title block ─────────────────────────────── */
+
+    .doc-head {
+      padding: clamp(3rem, 7vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      position: relative;
+    }
+
+    .doc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .doc-eyebrow::before,
+    .doc-eyebrow::after {
+      content: "";
+      width: 2.5rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1.doc-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6vw, 4.25rem);
+      line-height: 1;
+      color: var(--burgundy);
+      margin: 1.4rem 0 0.75rem;
+      letter-spacing: 0.015em;
+      font-variant: small-caps;
+    }
+
+    .doc-title-rule {
+      width: 3rem;
+      height: 1px;
+      background: var(--burgundy);
+      margin: 1.1rem auto 1.25rem;
+      position: relative;
+    }
+
+    .doc-title-rule::before {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--parchment);
+      padding: 0 0.5rem;
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    .doc-sub {
+      font-family: var(--display);
+      font-size: 1.18rem;
+      color: var(--ink);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .doc-meta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .doc-meta span {
+      padding: 0.35rem 0.6rem 0.32rem;
+      border: 1px solid var(--rule);
+      background: var(--parchment-hi);
+    }
+
+    /* ─── Document body ─────────────────────────────── */
+
+    .doc-body {
+      padding: clamp(2rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem);
+    }
+
+    .doc-body section {
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+
+    .doc-body section + section {
+      border-top: 1px solid var(--rule-soft);
+    }
+
+    .doc-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--gold-lo);
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      padding-top: 0.15rem;
+    }
+
+    .doc-body h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--burgundy);
+      margin: 0 0 0.55rem;
+      font-variant: small-caps;
+      letter-spacing: 0.015em;
+    }
+
+    .doc-body p {
+      margin: 0 0 0.85rem;
+      font-size: 1.04rem;
+      line-height: 1.65;
+    }
+
+    .doc-body p:last-child { margin-bottom: 0; }
+
+    .doc-body a {
+      color: var(--burgundy);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(90, 23, 33, 0.35);
+      transition: color 200ms ease, text-decoration-color 200ms ease;
+    }
+
+    .doc-body a:hover {
+      color: var(--burgundy-lo);
+      text-decoration-color: var(--gold);
+    }
+
+    .doc-body ul {
+      margin: 0.65rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .doc-body li {
+      position: relative;
+      padding: 0.65rem 0 0.65rem 1.3rem;
+      border-bottom: 1px dashed var(--rule-soft);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .doc-body li:last-child { border-bottom: none; }
+
+    .doc-body li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      color: var(--gold);
+      font-size: 0.55rem;
+    }
+
+    .doc-body li strong {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.08rem;
+      color: var(--burgundy);
+      letter-spacing: 0.01em;
+    }
+
+    .contact-block {
+      margin-top: 0.75rem;
+    }
+
+    a.email-reveal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.15rem;
+      background: var(--burgundy);
+      color: #fff;
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 1.06rem;
+      letter-spacing: 0.012em;
+      border: 1px solid var(--burgundy-lo);
+      outline: 1px solid var(--rule-gold);
+      outline-offset: 3px;
+      text-decoration: none;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+
+    a.email-reveal::before {
+      content: "✦";
+      color: var(--gold);
+    }
+
+    a.email-reveal:hover {
+      background: var(--burgundy-lo);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ─── Ornament ─────────────────────────────── */
+
+    .ornament {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 0.6em;
+      font-size: 0.85rem;
+    }
+
+    /* ─── Footer ─────────────────────────────── */
+
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.75rem 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-left strong {
+      font-family: var(--display);
+      font-weight: 500;
+      color: var(--burgundy);
+      letter-spacing: 0.015em;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .footer-links a { color: var(--muted); transition: color 200ms ease; }
+    .footer-links a:hover { color: var(--burgundy); }
+
+    @media (max-width: 540px) {
+      .mast { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+      .nav { flex-wrap: wrap; }
+      .doc-body section { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap-wide">
+    <header class="mast" aria-label="Masthead">
+      <div class="brand">
+        <span class="brand-seal">Anfre Technologies</span>
+        <span class="brand-name">Vineyard Sim</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="../../index.html">Studio</a>
+        <a href="./">Folio</a>
+        <a href="privacy.es.html" aria-current="page">Privacidad</a>
+      </nav>
+    </header>
+  </div>
+
+  <main class="wrap">
+
+    <header class="doc-head">
+      <div class="doc-eyebrow">Política · Folio II</div>
+      <h1 class="doc-title">Política de privacidad</h1>
+      <div class="doc-title-rule" aria-hidden="true"></div>
+      <p class="doc-sub">Cómo Vineyard Sim gestiona tu información.</p>
+      <div class="doc-meta">
+        <span>Actualizado · 3 de junio de 2026</span>
+        <span>Lenguaje claro</span>
+      </div>
+    </header>
+
+    <article class="doc-body" aria-label="Privacy policy content">
+      <section>
+        <span class="doc-num">I.</span>
+        <div>
+          <h2>Resumen</h2>
+          <p>Vineyard Sim es un juego de simulación para un solo jugador. Tu privacidad es importante para nosotros. Esta política explica a qué datos accede la app, cuáles almacena y cuáles transmite.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">II.</span>
+        <div>
+          <h2>Recopilación de datos</h2>
+          <p>La app no requiere una cuenta, inicio de sesión ni registro para jugar. No recopila tu nombre, dirección de correo electrónico ni otra información de identificación personal.</p>
+          <p>Los servicios de terceros integrados en la app pueden recopilar datos limitados, como se describe a continuación.</p>
+          <ul>
+            <li><strong>Publicidad (Google AdMob) —</strong> la app muestra anuncios para financiar el juego gratuito. Google AdMob puede recopilar identificadores del dispositivo (como el Identificador de Publicidad de iOS / IDFA en dispositivos Apple, o el ID de Publicidad de Android en Android), la ubicación aproximada y datos de uso para mostrar anuncios relevantes. En iOS, la app solicitará tu permiso mediante el aviso de App Tracking Transparency (ATT) antes de cualquier seguimiento entre apps. Si lo rechazas, seguirás viendo anuncios, pero no serán personalizados. Puedes cambiar tu decisión en cualquier momento en Ajustes › Privacidad y seguridad › Rastreo en iOS, o Configuración › Google › Anuncios en Android. Consulta la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</li>
+            <li><strong>Compras dentro de la app (RevenueCat) —</strong> la app utiliza RevenueCat para gestionar las compras opcionales dentro de la app. RevenueCat puede recopilar identificadores anónimos del dispositivo y datos de las transacciones para procesar y verificar las compras. No se comparte ninguna información personal. Consulta la <a href="https://www.revenuecat.com/privacy/">Política de Privacidad de RevenueCat</a>.</li>
+            <li><strong>Analítica (Firebase / Google Analytics) —</strong> la app registra eventos de uso anónimos y limitados a la instancia de la app (como iniciar una partida o completar una temporada) y propiedades agregadas para entender cómo se juega. Estos datos son seudónimos —no están vinculados a un inicio de sesión ni a tu identidad real— y Google puede derivar una ubicación aproximada a partir de tu dirección IP. Consulta <a href="https://firebase.google.com/support/privacy">Privacidad y seguridad de Firebase</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</li>
+            <li><strong>Diagnóstico de fallos y rendimiento (Firebase Crashlytics &amp; Performance Monitoring) —</strong> cuando la app falla o para supervisar la estabilidad, envía a Google registros de fallos, información del dispositivo y de diagnóstico, y un identificador de instalación. Esto nos ayuda a corregir errores y mejorar el rendimiento, y no se usa para identificarte. La app también usa Firebase Remote Config (solo el identificador de instalación) para ajustar la configuración de forma remota. Consulta <a href="https://firebase.google.com/support/privacy">Privacidad y seguridad de Firebase</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">III.</span>
+        <div>
+          <h2>Almacenamiento local</h2>
+          <p>Los datos de la partida —el progreso de tu viñedo, los ajustes y los logros— se almacenan localmente en tu dispositivo mediante el almacenamiento estándar de la plataforma. Estos datos nunca salen de tu dispositivo y no son accesibles para nosotros ni para terceros.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">IV.</span>
+        <div>
+          <h2>Uso de la red</h2>
+          <p>La app utiliza Google Fonts para la tipografía, lo que puede generar solicitudes de red para descargar los archivos de fuentes en el primer inicio. Consulta las <a href="https://developers.google.com/fonts/faq/privacy">preguntas frecuentes de privacidad de Google Fonts</a>.</p>
+          <p>La app también realiza solicitudes de red para cargar anuncios (Google AdMob), verificar las compras dentro de la app (RevenueCat) y enviar datos analíticos anónimos y diagnósticos de fallos/rendimiento a Firebase (Google). El juego en sí es totalmente sin conexión y no requiere conexión a Internet.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">V.</span>
+        <div>
+          <h2>Publicidad</h2>
+          <p>La app muestra anuncios intersticiales en las pausas naturales del juego (por ejemplo, entre pantallas). Puedes eliminar todos los anuncios intersticiales de forma permanente mediante una compra dentro de la app.</p>
+          <p>Los anuncios los ofrece Google AdMob. Google puede usar identificadores del dispositivo y datos de uso para personalizar los anuncios. Puedes desactivar los anuncios personalizados en cualquier momento. En iOS, ve a Ajustes › Privacidad y seguridad › Rastreo para revocar el permiso de App Tracking Transparency, o a Ajustes › Privacidad y seguridad › Publicidad de Apple para desactivar la publicidad personalizada de Apple en todo el sistema. En Android, ve a Configuración › Google › Anuncios.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VI.</span>
+        <div>
+          <h2>Privacidad de los menores</h2>
+          <p>La app no recopila a sabiendas información de identificación personal —como un nombre o una dirección de correo electrónico— de nadie, incluidos los menores de 13 años. Los identificadores de analítica y publicidad descritos anteriormente son seudónimos y no se utilizan para identificar a personas.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VII.</span>
+        <div>
+          <h2>Servicios de terceros</h2>
+          <p>Vineyard Sim integra los siguientes servicios de terceros:</p>
+          <ul>
+            <li><strong>Google AdMob —</strong> publicación de anuncios. <a href="https://policies.google.com/privacy">Política de privacidad</a>.</li>
+            <li><strong>RevenueCat —</strong> gestión de compras dentro de la app. <a href="https://www.revenuecat.com/privacy/">Política de privacidad</a>.</li>
+            <li><strong>Firebase Analytics (Google) —</strong> analítica de uso anónima. <a href="https://firebase.google.com/support/privacy">Privacidad y seguridad</a>.</li>
+            <li><strong>Firebase Crashlytics &amp; Performance (Google) —</strong> informes de fallos y diagnóstico de rendimiento. <a href="https://firebase.google.com/support/privacy">Privacidad y seguridad</a>.</li>
+            <li><strong>Google Fonts —</strong> tipografía. <a href="https://developers.google.com/fonts/faq/privacy">Preguntas frecuentes de privacidad</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VIII.</span>
+        <div>
+          <h2>Cambios en esta política</h2>
+          <p>Si esta política se actualiza, los cambios se publicarán en esta página con una fecha actualizada.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">IX.</span>
+        <div>
+          <h2>Contacto</h2>
+          <p>Las preguntas sobre esta Política de Privacidad pueden enviarse a:</p>
+          <div class="contact-block">
+            <a class="email-reveal" id="privacy-email-link" href="#" aria-label="Email Anfre Technologies LLC about privacy">
+              Haz clic para mostrar el correo
+            </a>
+            <noscript>
+              <p style="font-size:0.9rem; color:var(--muted); margin-top:0.75rem;">
+                JavaScript desactivado — correo: contactus [at] anfretechnologies [dot] com
+              </p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+  </main>
+
+  <div class="wrap-wide">
+    <footer class="footer" aria-label="Footer">
+      <div class="footer-left">
+        <strong>Anfre Technologies LLC</strong> · © 2026 · todos los derechos reservados
+      </div>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="../../index.html">Studio</a>
+        <a href="./">Folio</a>
+        <a href="../../terms.html">Términos</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>
