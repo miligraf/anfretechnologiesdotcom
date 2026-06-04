@@ -272,6 +272,30 @@
       margin-right: 0.8rem;
     }
 
+    .hero-cta {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5ch;
+      margin-top: 1.6rem;
+      padding: 0.7rem 1.5rem;
+      font-family: var(--display);
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--parchment-hi);
+      background: var(--burgundy);
+      border: 1px solid var(--burgundy-lo);
+      border-radius: 2px;
+      text-decoration: none;
+      box-shadow: 0 1px 0 var(--rule-gold) inset, 0 6px 18px rgba(62, 14, 22, 0.22);
+      transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+    .hero-cta span { color: var(--gold); font-size: 0.95em; }
+    .hero-cta:hover {
+      background: var(--burgundy-hi);
+      transform: translateY(-1px);
+      box-shadow: 0 1px 0 var(--rule-gold) inset, 0 10px 24px rgba(62, 14, 22, 0.3);
+    }
+
     /* ─── Overture (intro) ─────────────────────────────── */
 
     .overture {
@@ -805,6 +829,7 @@
           <div class="hero-meta">
             <span>Simulation</span><span>Free w/ IAP</span><span>iOS</span>
           </div>
+          <a class="hero-cta" href="https://apps.apple.com/us/app/vineyard-sim/id6760923837" target="_blank" rel="noopener" aria-label="Download Vineyard Sim on the App Store">Download on the App&nbsp;Store <span>↗</span></a>
         </div>
       </div>
     </section>
