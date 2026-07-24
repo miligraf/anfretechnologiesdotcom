@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olive Farm Sim — A Grove Ledger | Anfre Technologies LLC</title>
+  <meta name="description" content="Olive Farm Sim: Oil Tycoon — a cozy, decision-driven olive farming sim. Four Mediterranean groves, one mill, and the pursuit of Grand Cru oil. By Anfre Technologies LLC.">
+  <meta name="theme-color" content="#EDE7D6">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Olive Farm Sim: Oil Tycoon">
+  <meta property="og:description" content="A cozy, decision-driven olive farming sim — groves, mill, and the pursuit of Grand Cru oil.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anfretechnologies.com/apps/olive-grove-sim/">
+  <meta property="og:image" content="https://anfretechnologies.com/apps/olive-grove-sim/region_tuscany.webp">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --stone: #EDE7D6;
+      --stone-hi: #F6F1E3;
+      --stone-lo: #E0D7BE;
+      --ink: #20261A;
+      --grove: #3E4B27;
+      --grove-hi: #55632F;
+      --grove-lo: #2C3619;
+      --leaf: #93A37B;
+      --terracotta: #AE5230;
+      --oil: #B5952E;
+      --oil-lo: #8D742A;
+      --muted: #6D7159;
+      --rule: rgba(62, 75, 39, 0.25);
+      --rule-soft: rgba(62, 75, 39, 0.10);
+      --rule-oil: rgba(181, 149, 46, 0.45);
+      --display: "Marcellus", "Palatino", "Book Antiqua", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      --max: 1180px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 1.04rem;
+      background-color: var(--stone);
+      background-image:
+        radial-gradient(at 50% 0%, rgba(181, 149, 46, 0.10), transparent 55%),
+        radial-gradient(at 85% 90%, rgba(62, 75, 39, 0.10), transparent 55%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.24 0 0 0 0 0.29 0 0 0 0 0.15 0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-attachment: fixed, fixed, fixed;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--grove);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    ::selection { background: var(--grove); color: var(--stone-hi); }
+
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    /* ─── Masthead ─────────────────────────────── */
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      color: var(--grove);
+    }
+
+    .brand-seal {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .brand-name {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+    }
+
+    .mast-nav {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .mast-nav a:hover { color: var(--terracotta); }
+
+    /* ─── Hero ─────────────────────────────────── */
+
+    .hero {
+      position: relative;
+      margin-top: 2rem;
+      border: 1px solid var(--rule);
+      outline: 1px solid var(--rule-oil);
+      outline-offset: 6px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px -30px rgba(32, 38, 26, 0.55);
+    }
+
+    .hero-img {
+      display: block;
+      width: 100%;
+      height: min(72vh, 640px);
+      object-fit: cover;
+      object-position: center 40%;
+      filter: saturate(1.02);
+    }
+
+    .hero-label {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: clamp(1rem, 4vw, 2.5rem);
+      background: linear-gradient(to top, rgba(32, 38, 26, 0.55), transparent 70%);
+      display: flex;
+    }
+
+    .hero-card {
+      background: var(--stone-hi);
+      border: 1px solid var(--rule);
+      padding: clamp(1.2rem, 3vw, 2rem) clamp(1.4rem, 3.5vw, 2.4rem);
+      max-width: 34rem;
+      box-shadow: 0 18px 50px -18px rgba(32, 38, 26, 0.6);
+      animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.15s;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .hero-vintage {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin: 0.45rem 0 0;
+      color: var(--grove-lo);
+    }
+
+    .hero-rule {
+      width: 64px;
+      height: 3px;
+      margin: 0.9rem 0;
+      background: linear-gradient(to right, var(--oil), transparent);
+    }
+
+    .hero-kicker { margin: 0 0 0.9rem; color: var(--muted); font-size: 1.05rem; }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--oil-lo);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--grove);
+      color: var(--stone-hi);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      padding: 0.75rem 1.3rem;
+      border: 1px solid var(--grove-lo);
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+
+    .hero-cta:hover { background: var(--grove-hi); transform: translateY(-1px); }
+    .hero-cta span { color: var(--oil); }
+
+    /* ─── Overture ─────────────────────────────── */
+
+    .overture {
+      max-width: 46rem;
+      margin: clamp(2.5rem, 7vw, 4.5rem) auto;
+      text-align: center;
+      font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+      line-height: 1.75;
+      color: var(--ink);
+    }
+
+    .overture em {
+      font-family: var(--display);
+      font-style: normal;
+      color: var(--terracotta);
+    }
+
+    /* ─── Section heads ────────────────────────── */
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin: clamp(2rem, 6vw, 3.5rem) 0 1.4rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.6rem;
+    }
+
+    .section-head-num {
+      font-family: var(--display);
+      color: var(--oil-lo);
+      font-size: 1rem;
+    }
+
+    .section-head-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+      margin: 0;
+      color: var(--grove-lo);
+    }
+
+    .section-head-tag {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── Groves ───────────────────────────────── */
+
+    .groves {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+      gap: 1.6rem;
+    }
+
+    .grove-card {
+      border: 1px solid var(--rule);
+      background: var(--stone-hi);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grove-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px -24px rgba(32, 38, 26, 0.5);
+    }
+
+    .grove-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .grove-body { padding: 1.1rem 1.3rem 1.3rem; }
+
+    .grove-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .grove-name {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 1.45rem;
+      margin: 0.25rem 0 0.4rem;
+      color: var(--grove-lo);
+    }
+
+    .grove-note { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+    .grove-varieties {
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--oil-lo);
+    }
+
+    /* ─── The Year ─────────────────────────────── */
+
+    .year {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 1.6rem;
+    }
+
+    .year-card {
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--oil);
+      background: var(--stone-hi);
+      padding: 1.4rem 1.5rem 1.5rem;
+    }
+
+    .year-num {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      color: var(--oil-lo);
+    }
+
+    .year-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 1.4rem;
+      margin: 0.3rem 0 0.6rem;
+      color: var(--grove-lo);
+    }
+
+    .year-card p { margin: 0; color: var(--muted); font-size: 0.99rem; }
+
+    /* ─── Pullquote ────────────────────────────── */
+
+    .pullquote {
+      margin: clamp(2.5rem, 7vw, 4.5rem) auto;
+      max-width: 44rem;
+      text-align: center;
+      position: relative;
+      padding: 0 1rem;
+    }
+
+    .pullquote blockquote {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.4rem, 3.4vw, 2rem);
+      line-height: 1.45;
+      color: var(--grove);
+    }
+
+    .pullquote figcaption {
+      margin-top: 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    /* ─── Colophon / support ───────────────────── */
+
+    .colophon {
+      border: 1px solid var(--rule);
+      outline: 1px solid var(--rule-oil);
+      outline-offset: 5px;
+      background: var(--stone-hi);
+      padding: clamp(1.6rem, 4.5vw, 2.6rem);
+      margin: clamp(2rem, 6vw, 3.5rem) 0;
+    }
+
+    .colophon-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .colophon h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(1.5rem, 3.2vw, 2rem);
+      margin: 0.4rem 0 0.8rem;
+      color: var(--grove-lo);
+    }
+
+    .colophon p { max-width: 44rem; color: var(--muted); margin: 0 0 1.2rem; }
+
+    .colophon-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+    .colophon-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--rule);
+      padding: 0.6rem 1.1rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--grove);
+      background: var(--stone);
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .colophon-link:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    /* ─── Footer ───────────────────────────────── */
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem 1.5rem;
+      padding: 1.4rem 0 2.2rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .footer-links { display: flex; gap: 1.2rem; }
+    .footer-links a:hover { color: var(--terracotta); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-card { animation: none; }
+      .grove-card, .hero-cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="mast">
+      <a class="brand" href="../../index.html">
+        <span class="brand-seal">Anfre</span>
+        <span class="brand-name">Technologies LLC</span>
+      </a>
+      <nav class="mast-nav" aria-label="Page navigation">
+        <a href="#groves">Groves</a>
+        <a href="#year">The Year</a>
+        <a href="#support">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-img" src="region_tuscany.webp" alt="Rolling Tuscan hills of silver-green olive groves around a stone farmhouse with cypresses." loading="eager" fetchpriority="high" width="1536" height="1024">
+      <div class="hero-label">
+        <div class="hero-card">
+          <div class="hero-vintage">MMXXVI · First Pressing</div>
+          <h1 class="hero-title" id="hero-title">Olive Farm Sim</h1>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="hero-kicker">A cozy, decision-driven olive farming sim — groves, mill, and the pursuit of Grand&nbsp;Cru oil.</p>
+          <div class="hero-meta">
+            <span>Four groves</span>
+            <span>Eight varieties</span>
+            <span>One mill</span>
+            <span>No ads, ever</span>
+          </div>
+          <a class="hero-cta" href="https://apps.apple.com/us/app/id6777821576" target="_blank" rel="noopener" aria-label="Olive Farm Sim on the App Store">On the App&nbsp;Store <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="overture" aria-label="Overture">
+      <p>Every autumn asks the same question: pick <em>green</em> for a peppery, structured oil — or wait for ripe fruit and a buttery one, and gamble a season's work against the olive fly. Everything else in the year is preparation for the answer.</p>
+    </section>
+
+    <header class="section-head" id="groves">
+      <span class="section-head-num">I.</span>
+      <h2 class="section-head-title">The Groves</h2>
+      <span class="section-head-tag">Terroir of record</span>
+    </header>
+
+    <section class="groves" aria-label="Growing regions">
+      <article class="grove-card">
+        <img src="region_andalusia.webp" alt="Vast sunlit plains of olive rows under a hot Andalusian sky." loading="lazy" width="1536" height="1024">
+        <div class="grove-body">
+          <span class="grove-eyebrow">Estate I · Spain</span>
+          <h3 class="grove-name">Andalusia</h3>
+          <p class="grove-note">The world's olive-oil capital — forgiving plains, hot summers, reliable yields. Where most growers take root.</p>
+          <div class="grove-varieties">Picual · Arbequina</div>
+        </div>
+      </article>
+
+      <article class="grove-card">
+        <img src="region_kalamata.webp" alt="Ancient olive trees on a rocky Greek coastline above a blue sea." loading="lazy" width="1536" height="1024">
+        <div class="grove-body">
+          <span class="grove-eyebrow">Estate II · Greece</span>
+          <h3 class="grove-name">Kalamata</h3>
+          <p class="grove-note">Home of the famous table olive. Balanced climate, summer drought — water is the discipline here.</p>
+          <div class="grove-varieties">Koroneiki · Leccino</div>
+        </div>
+      </article>
+
+      <article class="grove-card">
+        <img src="region_tuscany.webp" alt="Rolling Tuscan hill country with olive groves, cypresses, and a stone villa." loading="lazy" width="1536" height="1024">
+        <div class="grove-body">
+          <span class="grove-eyebrow">Estate III · Italy</span>
+          <h3 class="grove-name">Tuscany</h3>
+          <p class="grove-note">Prestige prices and the DOP Estate's exclusive table — if your oil earns it. Late frost is the nemesis.</p>
+          <div class="grove-varieties">Frantoio · Coratina</div>
+        </div>
+      </article>
+
+      <article class="grove-card">
+        <img src="region_tunisia.webp" alt="Arid North African olive groves stretching toward a pale desert horizon." loading="lazy" width="1536" height="1024">
+        <div class="grove-body">
+          <span class="grove-eyebrow">Estate IV · North Africa</span>
+          <h3 class="grove-name">Tunisia</h3>
+          <p class="grove-note">Ancient groves in arid land — the hardest campaign and the highest quality ceiling in the game.</p>
+          <div class="grove-varieties">Chetoui · Chemlali</div>
+        </div>
+      </article>
+    </section>
+
+    <header class="section-head" id="year">
+      <span class="section-head-num">II.</span>
+      <h2 class="section-head-title">The Year</h2>
+      <span class="section-head-tag">Grove to bottle</span>
+    </header>
+
+    <section class="year" aria-label="Yearly work">
+      <article class="year-card">
+        <span class="year-num">i.</span>
+        <h3 class="year-title">Grow &amp; Tend</h3>
+        <p>Prune in winter dormancy, guard the spring bloom, irrigate through summer drought, and scout for the olive fly before it takes the crop. Every season offers more work than you can do.</p>
+      </article>
+      <article class="year-card">
+        <span class="year-num">ii.</span>
+        <h3 class="year-title">Press &amp; Filter</h3>
+        <p>Stone mill, centrifuge, or hydraulic press — then Olio Nuovo, paper, or natural settling. Two decisions turn fruit into character, and the right pairing turns character into grade.</p>
+      </article>
+      <article class="year-card">
+        <span class="year-num">iii.</span>
+        <h3 class="year-title">Sell &amp; Build</h3>
+        <p>Six buyer channels, gated by quality and reputation — from the bulk truck to gourmet retailers, premium chefs, and two region-exclusive elite houses. Your oil is only as good as your worst choice.</p>
+      </article>
+    </section>
+
+    <figure class="pullquote" aria-label="Design philosophy">
+      <blockquote>We simulate decisions, not reality. Clarity beats realism — and every mechanic must earn its place as a meaningful choice.</blockquote>
+      <figcaption>Design principle · The studio</figcaption>
+    </figure>
+
+    <section class="colophon" id="support" aria-labelledby="support-title">
+      <span class="colophon-eyebrow">Colophon</span>
+      <h2 id="support-title">Support &amp; correspondence</h2>
+      <p>Olive Farm Sim is a single-player game — no account, no timers, no ads, fully playable offline. Two groves are free; Tuscany, Tunisia, and the Estate Bundle are optional purchases. For help, feedback, or anything else, write to the studio.</p>
+      <div class="colophon-links">
+        <a class="colophon-link email-reveal" id="support-email-link" href="#">Click to reveal email</a>
+        <a class="colophon-link" href="privacy.html">Privacy Policy</a>
+        <a class="colophon-link" href="../../terms.html">Terms of Use</a>
+      </div>
+      <noscript>
+        <p style="font-size:0.9rem; margin-top:0.8rem;">JavaScript disabled — email: contactus [at] anfretechnologies [dot] com</p>
+      </noscript>
+    </section>
+
+    <footer class="footer" aria-label="Footer">
+      <div><strong>Anfre Technologies LLC</strong> · © 2026 · all rights reserved</div>
+      <div class="footer-links">
+        <a href="../../index.html">Studio</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="../../terms.html">Terms</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("support-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+
+</body>
+</html>

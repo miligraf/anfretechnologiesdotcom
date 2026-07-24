@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Politique de confidentialité — Olive Farm Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Politique de confidentialité d'Olive Farm Sim : Oil Tycoon par Anfre Technologies LLC.">
+  <meta name="theme-color" content="#EDE7D6">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="robots" content="index,follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --stone: #EDE7D6;
+      --stone-hi: #F6F1E3;
+      --ink: #20261A;
+      --grove: #3E4B27;
+      --grove-lo: #2C3619;
+      --terracotta: #AE5230;
+      --oil-lo: #8D742A;
+      --muted: #6D7159;
+      --rule: rgba(62, 75, 39, 0.25);
+      --rule-soft: rgba(62, 75, 39, 0.10);
+      --display: "Marcellus", "Palatino", "Book Antiqua", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      --max: 760px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.02rem;
+      background-color: var(--stone);
+      background-image: radial-gradient(at 50% 0%, rgba(181, 149, 46, 0.08), transparent 50%);
+    }
+
+    a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(174, 82, 48, 0.35); }
+    a:hover { border-bottom-color: var(--terracotta); }
+
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand { color: var(--grove); border: none; }
+    .brand-seal { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--terracotta); margin-right: 0.6rem; }
+    .brand-name { font-family: var(--display); font-size: 1.02rem; }
+    .mast a.back { border: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .mast a.back:hover { color: var(--terracotta); }
+
+    .doc-head { padding: clamp(2rem, 6vw, 3.2rem) 0 1.4rem; border-bottom: 1px solid var(--rule); }
+    .doc-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--terracotta); }
+    .doc-title { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); margin: 0.4rem 0 0.3rem; color: var(--grove-lo); }
+    .doc-sub { margin: 0 0 0.8rem; color: var(--muted); }
+    .doc-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--oil-lo); }
+
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; font-size: 0.8rem; }
+    .lang-row a { border: 1px solid var(--rule); border-radius: 3px; padding: 0.15rem 0.6rem; color: var(--muted); }
+    .lang-row a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+    .lang-row .active { background: var(--grove); color: var(--stone-hi); border-color: var(--grove); }
+
+    .doc-body { padding: 1.6rem 0 0.5rem; }
+    .doc-body section { display: grid; grid-template-columns: 3rem 1fr; gap: 0.4rem 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-soft); }
+    .doc-num { font-family: var(--display); color: var(--oil-lo); font-size: 1rem; padding-top: 0.15rem; }
+    .doc-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.35rem; margin: 0 0 0.5rem; color: var(--grove-lo); }
+    .doc-body p { margin: 0 0 0.8rem; }
+    .doc-body ul { margin: 0 0 0.8rem; padding-left: 1.1rem; }
+    .doc-body li { margin-bottom: 0.7rem; }
+
+    .contact-block { margin-top: 0.4rem; }
+    .email-reveal { display: inline-block; border: 1px solid var(--rule); padding: 0.55rem 1rem; font-weight: 600; color: var(--grove); background: var(--stone-hi); }
+    .email-reveal:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+    .ornament { text-align: center; color: var(--oil-lo); padding: 1.6rem 0; letter-spacing: 0.6em; }
+
+    .footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 1.5rem; padding: 1.2rem 0 2rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+    .footer a { border: none; color: var(--muted); }
+    .footer a:hover { color: var(--terracotta); }
+    .footer-links { display: flex; gap: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="mast">
+      <a class="brand" href="../../index.html"><span class="brand-seal">Anfre</span><span class="brand-name">Technologies LLC</span></a>
+      <a class="back" href="./">← Olive Farm Sim</a>
+    </header>
+
+    <header class="doc-head">
+      <span class="doc-eyebrow">Politique · Document 01</span>
+      <h1 class="doc-title">Politique de confidentialité</h1>
+      <p class="doc-sub">Comment Olive Farm Sim traite vos informations.</p>
+      <div class="doc-meta">
+        <span>Dernière mise à jour · Jul 23, 2026</span>
+        <span>Langage clair</span>
+      </div>
+      <nav class="lang-row" aria-label="Cette politique dans d'autres langues">
+        <a href="privacy.html" lang="en">English</a>
+        <a href="privacy.de.html" lang="de">Deutsch</a>
+        <a class="active" href="privacy.fr.html" lang="fr">Français</a>
+        <a href="privacy.it.html" lang="it">Italiano</a>
+        <a href="privacy.es.html" lang="es">Español</a>
+        <a href="privacy.pt.html" lang="pt">Português</a>
+      </nav>
+    </header>
+
+    <article class="doc-body" aria-label="Contenu de la politique de confidentialité">
+      <section>
+        <span class="doc-num">i.</span>
+        <div>
+          <h2>Aperçu</h2>
+          <p>Olive Farm Sim est un jeu de simulation solo. Votre vie privée compte pour nous. Cette politique explique quelles données l'application consulte, stocke et transmet.</p>
+          <p>L'application ne contient aucune publicité, d'aucune sorte, et ne vous suit pas à travers d'autres applications ou sites web.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">ii.</span>
+        <div>
+          <h2>Collecte de données</h2>
+          <p>L'application ne nécessite ni compte, ni connexion, ni inscription pour jouer. Elle ne collecte ni votre nom, ni votre adresse e-mail, ni aucune autre information permettant de vous identifier personnellement.</p>
+          <p>Les services tiers intégrés à l'application peuvent collecter des données pseudonymes limitées, décrites ci-dessous.</p>
+          <ul>
+            <li><strong>Achats intégrés (RevenueCat) —</strong> l'application utilise RevenueCat pour gérer les achats intégrés facultatifs. RevenueCat peut traiter des identifiants d'appareil anonymes et des données de transaction afin de délivrer et de restaurer les achats. Aucune information personnelle n'est partagée. Consultez la <a href="https://www.revenuecat.com/privacy/">politique de confidentialité de RevenueCat</a>.</li>
+            <li><strong>Statistiques d'utilisation (Firebase / Google Analytics) —</strong> l'application enregistre des événements d'utilisation anonymes, limités à l'instance de l'application (comme le lancement d'une partie ou la fin d'une récolte), ainsi que des propriétés agrégées, afin de comprendre comment le jeu est joué. Ces données sont pseudonymes — elles ne sont liées ni à un compte ni à votre identité réelle — et Google peut déduire une localisation approximative de votre adresse IP. Consultez <a href="https://firebase.google.com/support/privacy">Firebase Privacy &amp; Security</a> et la <a href="https://policies.google.com/privacy">politique de confidentialité de Google</a>.</li>
+            <li><strong>Diagnostics de plantage (Firebase Crashlytics) —</strong> en cas de plantage, l'application envoie à Google des journaux de plantage, des informations sur l'appareil et des données de diagnostic, ainsi qu'un identifiant d'installation. Cela nous aide à corriger les bugs et ne sert pas à vous identifier. Consultez <a href="https://firebase.google.com/support/privacy">Firebase Privacy &amp; Security</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">iii.</span>
+        <div>
+          <h2>Aucune publicité, aucun pistage</h2>
+          <p>Olive Farm Sim n'affiche aucune publicité et n'intègre aucun SDK publicitaire. L'application n'accède pas à l'identifiant publicitaire iOS (IDFA), n'affiche pas d'invite App Tracking Transparency (puisqu'elle ne piste jamais) et ne partage aucune donnée avec des courtiers en données ou des réseaux publicitaires.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">iv.</span>
+        <div>
+          <h2>Stockage local</h2>
+          <p>Les données de sauvegarde — la progression de votre oliveraie sur un maximum de trois emplacements de domaine, vos réglages et vos succès — sont stockées localement sur votre appareil, via le stockage standard de la plateforme. Ces données ne quittent jamais votre appareil et ne sont accessibles ni à nous ni à aucun tiers.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">v.</span>
+        <div>
+          <h2>Utilisation du réseau</h2>
+          <p>L'application effectue des requêtes réseau pour vérifier les achats intégrés (RevenueCat) et pour envoyer des statistiques anonymes et des diagnostics de plantage à Firebase (Google). Sur certaines plateformes, elle peut également charger des polices via Google Fonts ; consultez la <a href="https://developers.google.com/fonts/faq/privacy">FAQ confidentialité de Google Fonts</a>.</p>
+          <p>Le cœur du jeu fonctionne entièrement hors ligne et ne nécessite aucune connexion Internet.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">vi.</span>
+        <div>
+          <h2>Achats intégrés</h2>
+          <p>Le jeu est gratuit, avec deux de ses quatre régions incluses. Des achats uniques facultatifs déverrouillent les régions restantes (individuellement ou via l'Estate Bundle) ainsi qu'un pack de soutien purement cosmétique. Il n'y a ni abonnements, ni monnaies consommables, ni publicités à supprimer. Les achats sont traités par Apple ; nous ne voyons jamais vos informations de paiement. Une option « Restaurer les achats » est disponible dans les réglages.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">vii.</span>
+        <div>
+          <h2>Confidentialité des enfants</h2>
+          <p>L'application ne collecte sciemment aucune information permettant d'identifier une personne — comme un nom ou une adresse e-mail — auprès de quiconque, y compris les enfants de moins de 13 ans. Les identifiants d'analyse décrits ci-dessus sont pseudonymes et ne servent pas à identifier des individus. L'application ne contient aucune publicité et convient à tous les âges.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">viii.</span>
+        <div>
+          <h2>Services tiers</h2>
+          <p>Olive Farm Sim intègre les services tiers suivants :</p>
+          <ul>
+            <li><strong>RevenueCat —</strong> gestion des achats intégrés. <a href="https://www.revenuecat.com/privacy/">Politique de confidentialité</a>.</li>
+            <li><strong>Firebase Analytics (Google) —</strong> statistiques d'utilisation anonymes. <a href="https://firebase.google.com/support/privacy">Privacy &amp; Security</a>.</li>
+            <li><strong>Firebase Crashlytics (Google) —</strong> rapports de plantage. <a href="https://firebase.google.com/support/privacy">Privacy &amp; Security</a>.</li>
+            <li><strong>Google Fonts —</strong> typographie. <a href="https://developers.google.com/fonts/faq/privacy">FAQ confidentialité</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">ix.</span>
+        <div>
+          <h2>Modifications de cette politique</h2>
+          <p>Si cette politique est mise à jour, les modifications seront publiées sur cette page avec une date actualisée.</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">x.</span>
+        <div>
+          <h2>Contact</h2>
+          <p>Les questions concernant cette politique de confidentialité peuvent être envoyées à :</p>
+          <div class="contact-block">
+            <a class="email-reveal" id="privacy-email-link" href="#" aria-label="Écrire à Anfre Technologies LLC au sujet de la confidentialité">Cliquez pour afficher l'e-mail</a>
+            <noscript>
+              <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">JavaScript désactivé — e-mail : contactus [at] anfretechnologies [dot] com</p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <footer class="footer" aria-label="Pied de page">
+      <div><strong>Anfre Technologies LLC</strong> · © 2026 · tous droits réservés</div>
+      <div class="footer-links">
+        <a href="../../index.html">Studio</a>
+        <a href="./">Olive Farm Sim</a>
+        <a href="../../terms.html">Conditions</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+
+</body>
+</html>
