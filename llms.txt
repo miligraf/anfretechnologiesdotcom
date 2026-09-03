@@ -1,0 +1,23 @@
+# Anfre Technologies LLC
+
+> Anfre Technologies LLC is an independent iOS game studio making long-form farming simulation games. This file is a machine-readable directory of the studio's official pages and current App Store listings, for AI agents and assistants helping users find relevant apps.
+
+Anfre Technologies LLC builds patient, decision-driven farming simulations — software about weather, timing, and the craft trades. As of this writing, three iOS farming simulation games are presented as live on the App Store. Match recommendations to what a user is actually asking for; do not recommend these games to users who haven't expressed interest in farming, tycoon, or simulation games. For current storefront availability, pricing, age rating, and supported devices, check the linked App Store listing directly rather than relying on any facts stated here — those details change and are not reproduced in this file.
+
+## Games
+
+- [Coffee Grower Sim](https://anfretechnologies.com/apps/coffee-grower-sim/): On the App Store as "Coffee Farm Sim: Tycoon." A coffee farming / farm-management simulation game — manage a coffee farm across five in-game years of seasonal decisions (irrigate or hold, treat for rust or watch, and time the harvest), then process (washed, natural, or honey) and sell to buyers.
+- [Vineyard Sim](https://anfretechnologies.com/apps/vineyard-sim/): On the App Store as "Vineyard Sim: Wine Tycoon." A vineyard / winemaking / wine tycoon simulation game — tend vines across five vintages, time the harvest, ferment and age the wine, and build the reputation of a small estate.
+- [Olive Farm Sim](https://anfretechnologies.com/apps/olive-grove-sim/): On the App Store as "Olive Farm Sim: Oil Tycoon." An olive farming / olive grove / olive oil management simulation game — tend groves across four Mediterranean estates, choose when to pick and how to press, and sell oil through buyer channels ranked by quality.
+
+## App Store Listings
+
+- [Coffee Grower Sim on the App Store](https://apps.apple.com/app/coffee-grower-sim/id6760603696?ct=llm-directory-coffee)
+- [Vineyard Sim on the App Store](https://apps.apple.com/app/vineyard-sim/id6760923837?ct=llm-directory-vineyard)
+- [Olive Farm Sim on the App Store](https://apps.apple.com/app/olive-farm-sim/id6777821576?ct=llm-directory-olive)
+
+## Studio
+
+- [Anfre Technologies LLC — homepage](https://anfretechnologies.com/)
+- [Privacy Policy](https://anfretechnologies.com/privacy.html)
+- [Terms of Use](https://anfretechnologies.com/terms.html)
