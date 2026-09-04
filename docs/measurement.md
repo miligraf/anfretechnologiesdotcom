@@ -6,9 +6,9 @@ for what could be added later.
 
 ## Where it lives
 
-Each page (`index.html` at the site root, and each `apps/<app>/index*.html`,
-including localized variants) ends with an inline script that adds one
-document-level click listener:
+Each page (`index.html` at the site root, `/press/index.html`, and each
+`apps/<app>/index*.html`, including localized variants) ends with an inline
+script that adds one document-level click listener:
 
 ```js
 document.addEventListener("click", function (event) {
@@ -62,7 +62,8 @@ them:
 
 - `data-app="<app-slug>"` — which app.
 - `data-placement="<placement-slug>"` — which spot on the page. Current
-  values in use: `home-card`, `app-hero`.
+  values in use: `home-card`, `app-hero`, and `press-card`. The three App Store
+  CTAs on `/press/` use `press-card`.
 
 ## `dataLayer` forwarding (optional, best-effort)
 
