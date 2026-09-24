@@ -89,6 +89,17 @@ lets App Store analytics distinguish which on-site link a store visit came
 from (home card vs. app-page hero, and per-locale page for localized
 variants).
 
+Current Vineyard Sim localized hero campaigns:
+
+- `/apps/vineyard-sim/index.ja.html` → `app-vineyard-hero-ja`
+- `/apps/vineyard-sim/index.ko.html` → `app-vineyard-hero-ko`
+- `/apps/vineyard-sim/index.zh-Hans.html` → `app-vineyard-hero-zh-hans`
+- `/apps/vineyard-sim/index.hi.html` → `app-vineyard-hero-hi`
+
+All four retain `data-app="vineyard-sim"` and `data-placement="app-hero"`;
+the locale distinction is in Apple's `ct` token, not the provider-neutral
+event detail.
+
 ## No analytics provider is configured
 
 There is no Google Analytics, GTM, Plausible, or any other analytics script
