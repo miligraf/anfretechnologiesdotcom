@@ -209,6 +209,11 @@
       background: var(--parchment-hi);
     }
 
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.78rem; }
+    .lang-row a { border: 1px solid var(--rule); border-radius: 3px; padding: 0.25rem 0.65rem; color: var(--muted); }
+    .lang-row a:hover { color: var(--burgundy); border-color: var(--gold); }
+    .lang-row a.active { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+
     /* ─── Document body ─────────────────────────────── */
 
     .doc-body {
@@ -422,6 +427,19 @@
         <span>Updated · Jun 3, 2026</span>
         <span>Plain language</span>
       </div>
+
+      <nav class="lang-row" aria-label="This policy in other languages">
+        <a class="active" href="privacy.html" lang="en">English</a>
+        <a href="privacy.de.html" lang="de">Deutsch</a>
+        <a href="privacy.es.html" lang="es">Español</a>
+        <a href="privacy.fr.html" lang="fr">Français</a>
+        <a href="privacy.it.html" lang="it">Italiano</a>
+        <a href="privacy.pt.html" lang="pt">Português</a>
+        <a href="privacy.hi.html" lang="hi">हिन्दी</a>
+        <a href="privacy.ja.html" lang="ja">日本語</a>
+        <a href="privacy.ko.html" lang="ko">한국어</a>
+        <a href="privacy.zh-Hans.html" lang="zh-Hans">简体中文</a>
+      </nav>
     </header>
 
     <article class="doc-body" aria-label="Privacy policy content">

@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>गोपनीयता नीति — Vineyard Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Anfre Technologies LLC के गेम Vineyard Sim की गोपनीयता नीति।">
+  <meta name="theme-color" content="#F2EADB">
+  <link rel="canonical" href="https://anfretechnologies.com/apps/vineyard-sim/privacy.hi.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --parchment: #F2EADB;
+      --parchment-hi: #F9F3E5;
+      --parchment-lo: #E8DDC6;
+      --ink: #1A0F12;
+      --burgundy: #5A1721;
+      --burgundy-hi: #7A2331;
+      --burgundy-lo: #3E0E16;
+      --gold: #B58A3A;
+      --gold-lo: #8B6A2C;
+      --vine: #4F5B3A;
+      --muted: #7A5A60;
+      --rule: rgba(90, 23, 33, 0.22);
+      --rule-soft: rgba(90, 23, 33, 0.1);
+      --rule-gold: rgba(181, 138, 58, 0.45);
+      --display: "Cormorant Garamond", "Garamond", "Hoefler Text", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.04rem;
+      background-color: var(--parchment);
+      background-image:
+        radial-gradient(at 50% 0%, rgba(181, 138, 58, 0.08), transparent 55%),
+        radial-gradient(at 15% 95%, rgba(90, 23, 33, 0.06), transparent 55%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.36 0 0 0 0 0.09 0 0 0 0 0.13 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-attachment: fixed, fixed, fixed;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--burgundy);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    ::selection { background: var(--burgundy); color: var(--parchment-hi); }
+
+    .wrap { width: min(680px, calc(100% - 2rem)); margin: 0 auto; }
+    .wrap-wide { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      color: var(--burgundy);
+    }
+
+    .brand-seal {
+      font-family: var(--body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.6rem 0.22rem;
+      border-radius: 1px;
+    }
+
+    .brand-name {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+      letter-spacing: 0.01em;
+    }
+
+    .nav {
+      display: inline-flex;
+      gap: 0.1rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a {
+      padding: 0.35rem 0.75rem;
+      border-bottom: 1px solid transparent;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .nav a:hover { color: var(--burgundy); border-bottom-color: var(--gold); }
+
+    .nav a[aria-current="page"] {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ─── Title block ─────────────────────────────── */
+
+    .doc-head {
+      padding: clamp(3rem, 7vw, 6rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      position: relative;
+    }
+
+    .doc-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    .doc-eyebrow::before,
+    .doc-eyebrow::after {
+      content: "";
+      width: 2.5rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1.doc-title {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6vw, 4.25rem);
+      line-height: 1;
+      color: var(--burgundy);
+      margin: 1.4rem 0 0.75rem;
+      letter-spacing: 0.015em;
+      font-variant: small-caps;
+    }
+
+    .doc-title-rule {
+      width: 3rem;
+      height: 1px;
+      background: var(--burgundy);
+      margin: 1.1rem auto 1.25rem;
+      position: relative;
+    }
+
+    .doc-title-rule::before {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--parchment);
+      padding: 0 0.5rem;
+      color: var(--gold);
+      font-size: 0.65rem;
+    }
+
+    .doc-sub {
+      font-family: var(--display);
+      font-size: 1.18rem;
+      color: var(--ink);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .doc-meta {
+      margin-top: 1.5rem;
+      display: inline-flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .doc-meta span {
+      padding: 0.35rem 0.6rem 0.32rem;
+      border: 1px solid var(--rule);
+      background: var(--parchment-hi);
+    }
+
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; font-size: 0.78rem; }
+    .lang-row a { border: 1px solid var(--rule); border-radius: 3px; padding: 0.25rem 0.65rem; color: var(--muted); }
+    .lang-row a:hover { color: var(--burgundy); border-color: var(--gold); }
+    .lang-row a.active { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+
+    /* ─── Document body ─────────────────────────────── */
+
+    .doc-body {
+      padding: clamp(2rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem);
+    }
+
+    .doc-body section {
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+
+    .doc-body section + section {
+      border-top: 1px solid var(--rule-soft);
+    }
+
+    .doc-num {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--gold-lo);
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      padding-top: 0.15rem;
+    }
+
+    .doc-body h2 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      color: var(--burgundy);
+      margin: 0 0 0.55rem;
+      font-variant: small-caps;
+      letter-spacing: 0.015em;
+    }
+
+    .doc-body p {
+      margin: 0 0 0.85rem;
+      font-size: 1.04rem;
+      line-height: 1.65;
+    }
+
+    .doc-body p:last-child { margin-bottom: 0; }
+
+    .doc-body a {
+      color: var(--burgundy);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(90, 23, 33, 0.35);
+      transition: color 200ms ease, text-decoration-color 200ms ease;
+    }
+
+    .doc-body a:hover {
+      color: var(--burgundy-lo);
+      text-decoration-color: var(--gold);
+    }
+
+    .doc-body ul {
+      margin: 0.65rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .doc-body li {
+      position: relative;
+      padding: 0.65rem 0 0.65rem 1.3rem;
+      border-bottom: 1px dashed var(--rule-soft);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .doc-body li:last-child { border-bottom: none; }
+
+    .doc-body li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      color: var(--gold);
+      font-size: 0.55rem;
+    }
+
+    .doc-body li strong {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.08rem;
+      color: var(--burgundy);
+      letter-spacing: 0.01em;
+    }
+
+    .contact-block {
+      margin-top: 0.75rem;
+    }
+
+    a.email-reveal {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.15rem;
+      background: var(--burgundy);
+      color: #fff;
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 1.06rem;
+      letter-spacing: 0.012em;
+      border: 1px solid var(--burgundy-lo);
+      outline: 1px solid var(--rule-gold);
+      outline-offset: 3px;
+      text-decoration: none;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+
+    a.email-reveal::before {
+      content: "✦";
+      color: var(--gold);
+    }
+
+    a.email-reveal:hover {
+      background: var(--burgundy-lo);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* ─── Ornament ─────────────────────────────── */
+
+    .ornament {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 0.6em;
+      font-size: 0.85rem;
+    }
+
+    /* ─── Footer ─────────────────────────────── */
+
+    .footer {
+      border-top: 1px solid var(--rule);
+      padding: 1.75rem 0 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-left strong {
+      font-family: var(--display);
+      font-weight: 500;
+      color: var(--burgundy);
+      letter-spacing: 0.015em;
+      font-size: 1rem;
+    }
+
+    .footer-links {
+      display: inline-flex;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .footer-links a { color: var(--muted); transition: color 200ms ease; }
+    .footer-links a:hover { color: var(--burgundy); }
+
+    @media (max-width: 540px) {
+      .mast { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+      .nav { flex-wrap: wrap; }
+      .doc-body section { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap-wide">
+    <header class="mast" aria-label="शीर्षक क्षेत्र">
+      <div class="brand">
+        <span class="brand-seal">Anfre Technologies</span>
+        <span class="brand-name">Vineyard Sim</span>
+      </div>
+      <nav class="nav" aria-label="मुख्य नेविगेशन">
+        <a href="../../index.html">स्टूडियो</a>
+        <a href="index.hi.html">फोलियो</a>
+        <a href="privacy.hi.html" aria-current="page">गोपनीयता</a>
+      </nav>
+    </header>
+  </div>
+
+  <main class="wrap">
+
+    <header class="doc-head">
+      <div class="doc-eyebrow">नीति · फोलियो II</div>
+      <h1 class="doc-title">गोपनीयता नीति</h1>
+      <div class="doc-title-rule" aria-hidden="true"></div>
+      <p class="doc-sub">Vineyard Sim आपकी जानकारी को कैसे संभालता है।</p>
+      <div class="doc-meta">
+        <span>अपडेट किया गया · 3 जून 2026</span>
+        <span>सरल भाषा</span>
+      </div>
+
+      <nav class="lang-row" aria-label="यह नीति अन्य भाषाओं में">
+        <a href="privacy.html" lang="en">English</a>
+        <a href="privacy.de.html" lang="de">Deutsch</a>
+        <a href="privacy.es.html" lang="es">Español</a>
+        <a href="privacy.fr.html" lang="fr">Français</a>
+        <a href="privacy.it.html" lang="it">Italiano</a>
+        <a href="privacy.pt.html" lang="pt">Português</a>
+        <a class="active" href="privacy.hi.html" lang="hi">हिन्दी</a>
+        <a href="privacy.ja.html" lang="ja">日本語</a>
+        <a href="privacy.ko.html" lang="ko">한국어</a>
+        <a href="privacy.zh-Hans.html" lang="zh-Hans">简体中文</a>
+      </nav>
+    </header>
+
+    <article class="doc-body" aria-label="गोपनीयता नीति की सामग्री">
+      <section>
+        <span class="doc-num">I.</span>
+        <div>
+          <h2>सारांश</h2>
+          <p>Vineyard Sim एक एकल-खिलाड़ी सिमुलेशन गेम है। आपकी गोपनीयता हमारे लिए महत्वपूर्ण है। यह नीति बताती है कि ऐप किस डेटा तक पहुँचता है, उसे कैसे संग्रहीत करता है और कैसे प्रसारित करता है।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">II.</span>
+        <div>
+          <h2>डेटा संग्रहण</h2>
+          <p>खेलने के लिए ऐप को किसी खाते, लॉगिन या पंजीकरण की आवश्यकता नहीं है। यह आपका नाम, ईमेल पता या अन्य व्यक्तिगत रूप से पहचान योग्य जानकारी एकत्र नहीं करता।</p>
+          <p>ऐप में एकीकृत तृतीय-पक्ष सेवाएँ नीचे वर्णित सीमित डेटा एकत्र कर सकती हैं।</p>
+          <ul>
+            <li><strong>विज्ञापन (Google AdMob) —</strong> ऐप मुफ़्त गेमप्ले को समर्थन देने के लिए विज्ञापन दिखाता है। Google AdMob प्रासंगिक विज्ञापन दिखाने के लिए डिवाइस पहचानकर्ता (जैसे Apple डिवाइस पर iOS विज्ञापन पहचानकर्ता / IDFA, या Android पर Android विज्ञापन ID), अनुमानित स्थान और उपयोग डेटा एकत्र कर सकता है। iOS पर, किसी भी क्रॉस-ऐप ट्रैकिंग से पहले ऐप App Tracking Transparency (ATT) प्रॉम्प्ट के माध्यम से आपकी अनुमति माँगेगा। यदि आप मना करते हैं, तो भी आपको विज्ञापन दिखेंगे, लेकिन वे व्यक्तिगत नहीं होंगे। आप अपना निर्णय किसी भी समय iOS पर Settings › Privacy &amp; Security › Tracking में, या Android पर Settings › Google › Ads में बदल सकते हैं। <a href="https://policies.google.com/privacy">Google गोपनीयता नीति</a> देखें।</li>
+            <li><strong>इन-ऐप ख़रीद (RevenueCat) —</strong> ऐप वैकल्पिक इन-ऐप ख़रीद प्रबंधित करने के लिए RevenueCat का उपयोग करता है। RevenueCat ख़रीद को प्रोसेस और सत्यापित करने के लिए अनाम डिवाइस पहचानकर्ता और लेन-देन डेटा एकत्र कर सकता है। कोई व्यक्तिगत जानकारी साझा नहीं की जाती। <a href="https://www.revenuecat.com/privacy/">RevenueCat गोपनीयता नीति</a> देखें।</li>
+            <li><strong>एनालिटिक्स (Firebase / Google Analytics) —</strong> ऐप यह समझने के लिए कि गेम कैसे खेला जाता है, अनाम, ऐप-इंस्टेंस-स्कोप्ड उपयोग इवेंट (जैसे गेम शुरू करना या सीज़न पूरा करना) और समग्र गुण रिकॉर्ड करता है। यह डेटा छद्मनाम है — यह किसी लॉगिन या आपकी वास्तविक पहचान से जुड़ा नहीं है — और Google आपके IP पते से अनुमानित स्थान निकाल सकता है। <a href="https://firebase.google.com/support/privacy">Firebase गोपनीयता और सुरक्षा</a> और <a href="https://policies.google.com/privacy">Google गोपनीयता नीति</a> देखें।</li>
+            <li><strong>क्रैश और प्रदर्शन डायग्नोस्टिक्स (Firebase Crashlytics और Performance Monitoring) —</strong> जब ऐप क्रैश होता है या स्थिरता की निगरानी के लिए, यह Google को क्रैश लॉग, डिवाइस और डायग्नोस्टिक जानकारी, और एक इंस्टॉल पहचानकर्ता भेजता है। यह हमें बग ठीक करने और प्रदर्शन सुधारने में मदद करता है और आपकी पहचान के लिए उपयोग नहीं किया जाता। ऐप सेटिंग्स को दूर से समायोजित करने के लिए Firebase Remote Config (केवल इंस्टॉल पहचानकर्ता) का भी उपयोग करता है। <a href="https://firebase.google.com/support/privacy">Firebase गोपनीयता और सुरक्षा</a> देखें।</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">III.</span>
+        <div>
+          <h2>स्थानीय संग्रहण</h2>
+          <p>गेम सेव डेटा — आपकी अंगूर के बाग़ की प्रगति, सेटिंग्स और उपलब्धियाँ — मानक प्लेटफ़ॉर्म संग्रहण का उपयोग करके आपके डिवाइस पर स्थानीय रूप से संग्रहीत किया जाता है। यह डेटा कभी भी आपके डिवाइस से बाहर नहीं जाता और न हमारे लिए और न ही किसी तृतीय पक्ष के लिए सुलभ है।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">IV.</span>
+        <div>
+          <h2>नेटवर्क उपयोग</h2>
+          <p>ऐप टाइपोग्राफी के लिए Google Fonts का उपयोग करता है, जो पहली बार लॉन्च पर फ़ॉन्ट फ़ाइलें डाउनलोड करने के लिए नेटवर्क अनुरोध कर सकता है। <a href="https://developers.google.com/fonts/faq/privacy">Google Fonts गोपनीयता FAQ</a> देखें।</p>
+          <p>ऐप विज्ञापन लोड करने (Google AdMob), इन-ऐप ख़रीद सत्यापित करने (RevenueCat), और Firebase (Google) को अनाम एनालिटिक्स व क्रैश/प्रदर्शन डायग्नोस्टिक्स भेजने के लिए भी नेटवर्क अनुरोध करता है। मुख्य गेमप्ले पूरी तरह ऑफ़लाइन है और इंटरनेट कनेक्शन की आवश्यकता नहीं है।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">V.</span>
+        <div>
+          <h2>विज्ञापन</h2>
+          <p>ऐप गेमप्ले के प्राकृतिक विराम पर (जैसे, गेम स्क्रीन के बीच) इंटरस्टिशियल विज्ञापन दिखाता है। आप इन-ऐप ख़रीद के माध्यम से सभी इंटरस्टिशियल विज्ञापनों को स्थायी रूप से हटा सकते हैं।</p>
+          <p>विज्ञापन Google AdMob द्वारा परोसे जाते हैं। Google विज्ञापनों को निजीकृत करने के लिए डिवाइस पहचानकर्ता और उपयोग डेटा का उपयोग कर सकता है। आप किसी भी समय निजीकृत विज्ञापनों से बाहर निकल सकते हैं। iOS पर, App Tracking Transparency अनुमति रद्द करने के लिए Settings › Privacy &amp; Security › Tracking पर जाएँ, या Apple की पूरे सिस्टम में निजीकृत विज्ञापन प्रणाली अक्षम करने के लिए Settings › Privacy &amp; Security › Apple Advertising पर जाएँ। Android पर, Settings › Google › Ads पर जाएँ।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VI.</span>
+        <div>
+          <h2>बच्चों की गोपनीयता</h2>
+          <p>ऐप जानबूझकर किसी से भी — 13 वर्ष से कम आयु के बच्चों सहित — व्यक्तिगत रूप से पहचान योग्य जानकारी, जैसे नाम या ईमेल पता, एकत्र नहीं करता। ऊपर वर्णित एनालिटिक्स और विज्ञापन पहचानकर्ता छद्मनाम हैं और व्यक्तियों की पहचान के लिए उपयोग नहीं किए जाते।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VII.</span>
+        <div>
+          <h2>तृतीय-पक्ष सेवाएँ</h2>
+          <p>Vineyard Sim निम्नलिखित तृतीय-पक्ष सेवाओं को एकीकृत करता है:</p>
+          <ul>
+            <li><strong>Google AdMob —</strong> विज्ञापन सेवा। <a href="https://policies.google.com/privacy">गोपनीयता नीति</a>.</li>
+            <li><strong>RevenueCat —</strong> इन-ऐप ख़रीद प्रबंधन। <a href="https://www.revenuecat.com/privacy/">गोपनीयता नीति</a>.</li>
+            <li><strong>Firebase Analytics (Google) —</strong> अनाम उपयोग एनालिटिक्स। <a href="https://firebase.google.com/support/privacy">Firebase गोपनीयता और सुरक्षा</a>.</li>
+            <li><strong>Firebase Crashlytics और Performance (Google) —</strong> क्रैश रिपोर्टिंग और प्रदर्शन डायग्नोस्टिक्स। <a href="https://firebase.google.com/support/privacy">Firebase गोपनीयता और सुरक्षा</a>.</li>
+            <li><strong>Google Fonts —</strong> टाइपोग्राफी। <a href="https://developers.google.com/fonts/faq/privacy">गोपनीयता FAQ</a>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">VIII.</span>
+        <div>
+          <h2>इस नीति में बदलाव</h2>
+          <p>यदि इस नीति को अपडेट किया जाता है, तो परिवर्तन अपडेट की गई तारीख के साथ इस पेज पर पोस्ट किए जाएँगे।</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">IX.</span>
+        <div>
+          <h2>संपर्क</h2>
+          <p>इस गोपनीयता नीति के बारे में प्रश्न यहाँ भेजे जा सकते हैं:</p>
+          <div class="contact-block">
+            <a class="email-reveal" id="privacy-email-link" href="#" aria-label="गोपनीयता के बारे में Anfre Technologies LLC को ईमेल करें">
+              ईमेल दिखाने के लिए क्लिक करें
+            </a>
+            <noscript>
+              <p style="font-size:0.9rem; color:var(--muted); margin-top:0.75rem;">
+                JavaScript अक्षम — ईमेल: contactus [at] anfretechnologies [dot] com
+              </p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+  </main>
+
+  <div class="wrap-wide">
+    <footer class="footer" aria-label="फुटर">
+      <div class="footer-left">
+        <strong>Anfre Technologies LLC</strong> · © 2026 · सर्वाधिकार सुरक्षित
+      </div>
+      <div class="footer-links" aria-label="फुटर नेविगेशन">
+        <a href="../../index.html">स्टूडियो</a>
+        <a href="index.hi.html">फोलियो</a>
+        <a href="../../terms.html">नियम</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+</body>
+</html>

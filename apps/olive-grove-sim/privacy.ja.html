@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー — Olive Farm Sim | Anfre Technologies LLC</title>
+  <meta name="description" content="Anfre Technologies LLC の Olive Farm Sim: Oil Tycoon のプライバシーポリシー。">
+  <meta name="theme-color" content="#EDE7D6">
+  <link rel="canonical" href="https://anfretechnologies.com/apps/olive-grove-sim/privacy.ja.html">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="robots" content="index,follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --stone: #EDE7D6;
+      --stone-hi: #F6F1E3;
+      --ink: #20261A;
+      --grove: #3E4B27;
+      --grove-lo: #2C3619;
+      --terracotta: #AE5230;
+      --oil-lo: #8D742A;
+      --muted: #6D7159;
+      --rule: rgba(62, 75, 39, 0.25);
+      --rule-soft: rgba(62, 75, 39, 0.10);
+      --display: "Marcellus", "Palatino", "Book Antiqua", serif;
+      --body: "Source Sans 3", -apple-system, system-ui, sans-serif;
+      --max: 760px;
+      color-scheme: light;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1.02rem;
+      background-color: var(--stone);
+      background-image: radial-gradient(at 50% 0%, rgba(181, 149, 46, 0.08), transparent 50%);
+    }
+
+    a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid rgba(174, 82, 48, 0.35); }
+    a:hover { border-bottom-color: var(--terracotta); }
+
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    .mast {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .brand { color: var(--grove); border: none; }
+    .brand-seal { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--terracotta); margin-right: 0.6rem; }
+    .brand-name { font-family: var(--display); font-size: 1.02rem; }
+    .mast a.back { border: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .mast a.back:hover { color: var(--terracotta); }
+
+    .doc-head { padding: clamp(2rem, 6vw, 3.2rem) 0 1.4rem; border-bottom: 1px solid var(--rule); }
+    .doc-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--terracotta); }
+    .doc-title { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 6vw, 2.8rem); margin: 0.4rem 0 0.3rem; color: var(--grove-lo); }
+    .doc-sub { margin: 0 0 0.8rem; color: var(--muted); }
+    .doc-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--oil-lo); }
+
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; font-size: 0.8rem; }
+    .lang-row a { border: 1px solid var(--rule); border-radius: 3px; padding: 0.15rem 0.6rem; color: var(--muted); }
+    .lang-row a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+    .lang-row .active { background: var(--grove); color: var(--stone-hi); border-color: var(--grove); }
+
+    .doc-body { padding: 1.6rem 0 0.5rem; }
+    .doc-body section { display: grid; grid-template-columns: 3rem 1fr; gap: 0.4rem 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-soft); }
+    .doc-num { font-family: var(--display); color: var(--oil-lo); font-size: 1rem; padding-top: 0.15rem; }
+    .doc-body h2 { font-family: var(--display); font-weight: 400; font-size: 1.35rem; margin: 0 0 0.5rem; color: var(--grove-lo); }
+    .doc-body p { margin: 0 0 0.8rem; }
+    .doc-body ul { margin: 0 0 0.8rem; padding-left: 1.1rem; }
+    .doc-body li { margin-bottom: 0.7rem; }
+
+    .contact-block { margin-top: 0.4rem; }
+    .email-reveal { display: inline-block; border: 1px solid var(--rule); padding: 0.55rem 1rem; font-weight: 600; color: var(--grove); background: var(--stone-hi); }
+    .email-reveal:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+    .ornament { text-align: center; color: var(--oil-lo); padding: 1.6rem 0; letter-spacing: 0.6em; }
+
+    .footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 1.5rem; padding: 1.2rem 0 2rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+    .footer a { border: none; color: var(--muted); }
+    .footer a:hover { color: var(--terracotta); }
+    .footer-links { display: flex; gap: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="mast">
+      <a class="brand" href="../../index.html"><span class="brand-seal">Anfre</span><span class="brand-name">Technologies LLC</span></a>
+      <a class="back" href="index.ja.html">← Olive Farm Sim</a>
+    </header>
+
+    <header class="doc-head">
+      <span class="doc-eyebrow">ポリシー · 文書 01</span>
+      <h1 class="doc-title">プライバシーポリシー</h1>
+      <p class="doc-sub">Olive Farm Sim がお客様の情報をどのように扱うか。</p>
+      <div class="doc-meta">
+        <span>最終更新日 · 2026年7月23日</span>
+        <span>平易な言葉で説明</span>
+      </div>
+      <nav class="lang-row" aria-label="このポリシーの他言語版">
+        <a href="privacy.html" lang="en">English</a>
+        <a href="privacy.de.html" lang="de">Deutsch</a>
+        <a href="privacy.es.html" lang="es">Español</a>
+        <a href="privacy.fr.html" lang="fr">Français</a>
+        <a href="privacy.it.html" lang="it">Italiano</a>
+        <a href="privacy.pt.html" lang="pt">Português</a>
+        <a href="privacy.hi.html" lang="hi">हिन्दी</a>
+        <a class="active" href="privacy.ja.html" lang="ja">日本語</a>
+        <a href="privacy.ko.html" lang="ko">한국어</a>
+        <a href="privacy.zh-Hans.html" lang="zh-Hans">简体中文</a>
+      </nav>
+    </header>
+
+    <article class="doc-body" aria-label="プライバシーポリシーの内容">
+      <section>
+        <span class="doc-num">i.</span>
+        <div>
+          <h2>概要</h2>
+          <p>Olive Farm Sim はシングルプレイヤーのシミュレーションゲームです。お客様のプライバシーは私たちにとって重要です。このポリシーでは、アプリがどのデータにアクセスし、何を保存し、何を送信するかを説明します。</p>
+          <p>本アプリにはいかなる種類の広告も含まれておらず、他のアプリやウェブサイトを横断してお客様を追跡することもありません。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">ii.</span>
+        <div>
+          <h2>データ収集</h2>
+          <p>本アプリはプレイにアカウント、ログイン、登録を必要としません。お客様の氏名、メールアドレス、その他個人を特定できる情報を収集することはありません。</p>
+          <p>アプリに組み込まれたサードパーティサービスは、以下に説明する限定的な仮名データを収集する場合があります。</p>
+          <ul>
+            <li><strong>アプリ内課金（RevenueCat）—</strong> 本アプリは任意のアプリ内課金の管理にRevenueCatを使用しています。RevenueCatは、購入の提供と復元のために匿名のデバイス識別子と取引データを処理する場合があります。個人情報が共有されることはありません。<a href="https://www.revenuecat.com/privacy/">RevenueCatのプライバシーポリシー</a>をご覧ください。</li>
+            <li><strong>アナリティクス（Firebase / Google Analytics）—</strong> 本アプリは、アプリインスタンスに限定された匿名の利用イベント（セッションの開始や収穫の完了など）と、プレイのされ方を理解するための集計プロパティを記録します。このデータは仮名化されており——ログインや実際の身元とは結び付けられません——Googleはお客様のIPアドレスからおおよその位置情報を推定する場合があります。<a href="https://firebase.google.com/support/privacy">Firebase プライバシーとセキュリティ</a>および<a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>をご覧ください。</li>
+            <li><strong>クラッシュ診断（Firebase Crashlytics）—</strong> アプリが予期せず終了した場合、クラッシュログ、デバイスおよび診断情報、インストール識別子がGoogleに送信されます。これはバグ修正に役立てるためのもので、お客様個人の特定には使用されません。<a href="https://firebase.google.com/support/privacy">Firebase プライバシーとセキュリティ</a>をご覧ください。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">iii.</span>
+        <div>
+          <h2>広告なし、追跡なし</h2>
+          <p>Olive Farm Sim は広告を表示せず、広告SDKも一切含まれていません。本アプリはiOSの広告識別子（IDFA）にアクセスせず、App Tracking Transparencyのプロンプトも表示しません（そもそも追跡を行わないため）。また、データブローカーや広告ネットワークとデータを共有することもありません。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">iv.</span>
+        <div>
+          <h2>ローカルストレージ</h2>
+          <p>最大3つのファームスロットにおける農園の進行状況、設定、実績などのセーブデータは、標準のプラットフォームストレージを通じてお客様のデバイスにローカルに保存されます。このデータがデバイスの外に出ることはなく、私たちや第三者がアクセスすることもできません。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">v.</span>
+        <div>
+          <h2>ネットワークの使用</h2>
+          <p>本アプリは、アプリ内課金の確認（RevenueCat）、および匿名のアナリティクスとクラッシュ診断をFirebase（Google）に送信するためにネットワークリクエストを行います。一部のプラットフォームでは、Google Fontsを通じてフォントを読み込む場合もあります。<a href="https://developers.google.com/fonts/faq/privacy">Google Fontsプライバシーに関するよくある質問</a>をご覧ください。</p>
+          <p>ゲーム本体は完全にオフラインで動作し、インターネットは不要です。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">vi.</span>
+        <div>
+          <h2>アプリ内課金</h2>
+          <p>本ゲームは無料で、4つの地域のうち2つが含まれています。任意の買い切り課金により、残りの地域を個別に、または「Estate Bundle」として、さらに純粋に外見を変更するだけの後援者パックをアンロックできます。サブスクリプション、消費型通貨、削除できる広告はありません。購入はAppleが処理し、私たちがお客様の支払いデータを目にすることはありません。「購入を復元」オプションは設定内でご利用いただけます。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">vii.</span>
+        <div>
+          <h2>子どものプライバシー</h2>
+          <p>本アプリは、13歳未満のお子様を含め、氏名やメールアドレスなど個人を特定できる情報を故意に収集することはありません。上記のアナリティクス識別子は仮名化されており、個人の特定には使用されません。本アプリには広告が含まれておらず、すべての年齢の方にご利用いただけます。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">viii.</span>
+        <div>
+          <h2>サードパーティサービス</h2>
+          <p>Olive Farm Sim は以下のサードパーティサービスを統合しています：</p>
+          <ul>
+            <li><strong>RevenueCat —</strong> アプリ内課金の管理。<a href="https://www.revenuecat.com/privacy/">プライバシーポリシー</a>。</li>
+            <li><strong>Firebase Analytics（Google）—</strong> 匿名の利用状況アナリティクス。<a href="https://firebase.google.com/support/privacy">プライバシーとセキュリティ</a>。</li>
+            <li><strong>Firebase Crashlytics（Google）—</strong> クラッシュレポート。<a href="https://firebase.google.com/support/privacy">プライバシーとセキュリティ</a>。</li>
+            <li><strong>Google Fonts —</strong> タイポグラフィ。<a href="https://developers.google.com/fonts/faq/privacy">プライバシーに関するよくある質問</a>。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">ix.</span>
+        <div>
+          <h2>本ポリシーの変更</h2>
+          <p>本ポリシーが更新された場合、変更内容は更新日とともにこのページに掲載されます。</p>
+        </div>
+      </section>
+
+      <section>
+        <span class="doc-num">x.</span>
+        <div>
+          <h2>お問い合わせ</h2>
+          <p>本プライバシーポリシーに関するご質問は、以下までお送りください：</p>
+          <div class="contact-block">
+            <a class="email-reveal" id="privacy-email-link" href="#" aria-label="プライバシーについてAnfre Technologies LLCに連絡する">クリックしてメールアドレスを表示</a>
+            <noscript>
+              <p style="font-size:0.9rem; color:var(--muted); margin-top:0.6rem;">JavaScriptが無効です——メール: contactus [at] anfretechnologies [dot] com</p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div class="ornament" aria-hidden="true">· · ·</div>
+
+    <footer class="footer" aria-label="フッター">
+      <div><strong>Anfre Technologies LLC</strong> · © 2026 · 無断転載を禁じます</div>
+      <div class="footer-links">
+        <a href="../../index.html">スタジオ</a>
+        <a href="index.ja.html">Olive Farm Sim</a>
+        <a href="../../terms.html">利用規約</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var localPartCodes = [99, 111, 110, 116, 97, 99, 116, 117, 115];
+      var domainCodes = [97, 110, 102, 114, 101, 116, 101, 99, 104, 110, 111, 108, 111, 103, 105, 101, 115, 46, 99, 111, 109];
+      var link = document.getElementById("privacy-email-link");
+      if (!link) return;
+      var email = String.fromCharCode.apply(null, localPartCodes) + "@" + String.fromCharCode.apply(null, domainCodes);
+      link.href = "mailto:" + email;
+      link.textContent = email;
+      link.title = "Email " + email;
+    })();
+  </script>
+
+</body>
+</html>
